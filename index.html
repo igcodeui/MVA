@@ -5,38 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVA Campaign Intake & Scripting Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #0f172a; /* Slate 900 */
-            color: #e2e8f0; /* Slate 200 */
+            background-color: #0b0f19; /* Deep Slate Blue Black */
+            color: #f1f5f9; /* Slate 100 - High Contrast text */
         }
         .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #1e293b;
+            background: #0f172a;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #475569;
-            border-radius: 4px;
+            background: #334155;
+            border-radius: 6px;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col text-base">
+<body class="min-h-screen flex flex-col text-lg font-semibold selection:bg-indigo-500 selection:text-white">
 
-    <header class="bg-slate-800 border-b border-slate-700 shadow-xl sticky top-0 z-50">
-        <div class="max-w-[1600px] w-full mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="bg-rose-600 text-white font-bold py-2 px-3 rounded-lg text-sm tracking-wider uppercase">MVA Intake</div>
-                <h1 class="text-xl font-bold tracking-tight text-white hidden sm:block">Motor Vehicle Accident Campaign Portal</h1>
+    <header class="bg-slate-900 border-b border-slate-800 shadow-2xl sticky top-0 z-50">
+        <div class="max-w-[1600px] w-full mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="bg-indigo-600 text-white font-extrabold py-2 px-4 rounded-xl text-base tracking-wider uppercase shadow-inner">MVA Intake</div>
+                <h1 class="text-2xl font-extrabold tracking-tight text-white hidden sm:block">Motor Vehicle Accident Campaign Portal</h1>
             </div>
             <div class="flex items-center gap-4">
-                <span class="px-4 py-2 rounded-lg font-semibold text-sm bg-slate-900 border border-slate-700 text-slate-300 shadow-md hidden md:inline-block">
+                <span class="px-5 py-2.5 rounded-xl font-bold text-base bg-slate-950 border border-slate-800 text-slate-300 shadow-md hidden md:inline-block">
                     ⏳ Awaiting Main Flow Script
                 </span>
-                <button onclick="resetEntirePortal()" class="bg-rose-600 hover:bg-rose-500 text-white font-bold py-2 px-4 rounded-lg text-sm tracking-wide uppercase transition-all shadow-md flex items-center gap-1.5">
+                <button onclick="resetEntirePortal()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-2.5 px-5 rounded-xl text-base tracking-wide uppercase transition-all shadow-lg flex items-center gap-2">
                     ⟲ Reset Flow
                 </button>
             </div>
@@ -47,90 +47,90 @@
         
         <div class="xl:col-span-7 space-y-6">
             
-            <div class="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl">
-                <div class="flex items-start gap-3">
-                    <span class="text-amber-500 text-xl">⚠️</span>
-                    <p class="text-sm sm:text-base text-amber-200/90 leading-relaxed">
-                        <strong class="text-amber-400">Compliance Directive:</strong> Use these scripts verbatim. They are designed to be helpful and warm while staying within compliance bounds. If a situation is not covered below, default to: <span class="italic text-white font-medium">“That’s a question for a licensed attorney — I can help connect you with one.”</span>
+            <div class="bg-amber-500/10 border-l-4 border-amber-500 p-6 rounded-r-xl">
+                <div class="flex items-start gap-4">
+                    <span class="text-amber-500 text-2xl">⚠️</span>
+                    <p class="text-base sm:text-lg text-amber-200/90 leading-relaxed font-bold">
+                        <strong class="text-amber-400 font-extrabold">Compliance Directive:</strong> Use these scripts verbatim. They are designed to be helpful and warm while staying within compliance bounds. If a situation is not covered below, default to: <span class="italic text-white font-extrabold bg-slate-950 px-2 py-0.5 rounded border border-slate-800">“That’s a question for a licensed attorney — I can help connect you with one.”</span>
                     </p>
                 </div>
             </div>
 
-            <div id="step-1" class="bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-lg space-y-4">
-                <div class="flex justify-between items-center border-b border-slate-700/60 pb-3">
-                    <span class="text-sm font-bold uppercase tracking-wider text-rose-400">Campaign Introduction</span>
-                    <span class="bg-slate-900 text-rose-400 text-xs px-2.5 py-1 rounded font-mono font-bold">Step 1</span>
+            <div id="step-1" class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Campaign Introduction</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Step 1</span>
                 </div>
-                <div class="p-8 bg-slate-900/40 border border-dashed border-slate-700 rounded-xl text-center space-y-3">
-                    <p class="text-lg text-slate-300 font-semibold">Ready for Client Opening Script</p>
-                    <p class="text-sm text-slate-400 max-w-md mx-auto">Once the client hands over the greeting and intro flow, it will be seamlessly structured right here with visual highlights.</p>
+                <div class="p-8 bg-slate-950/40 border-2 border-dashed border-slate-800 rounded-xl text-center space-y-3">
+                    <p class="text-xl text-slate-200 font-extrabold">Ready for Client Opening Script</p>
+                    <p class="text-base text-slate-400 max-w-xl mx-auto font-bold">Once the client hands over the greeting and intro flow, it will be seamlessly structured right here with visual highlights.</p>
                 </div>
-                <button onclick="revealSection('step-2')" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-4 rounded-lg transition-all text-sm flex justify-center items-center gap-1.5 mt-2">
+                <button onclick="revealSection('step-2')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base flex justify-center items-center gap-2 mt-2 shadow-md">
                     Next: Accident Verification ➔
                 </button>
             </div>
 
-            <div id="step-2" class="hidden bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-lg space-y-4">
-                <div class="flex justify-between items-center border-b border-slate-700/60 pb-3">
-                    <span class="text-sm font-bold uppercase tracking-wider text-rose-400">Accident Verification</span>
-                    <span class="bg-slate-900 text-rose-400 text-xs px-2.5 py-1 rounded font-mono font-bold">Step 2</span>
+            <div id="step-2" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Accident Verification</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Step 2</span>
                 </div>
-                <div class="p-8 bg-slate-900/40 border border-dashed border-slate-700 rounded-xl text-center space-y-3">
-                    <p class="text-lg text-slate-300 font-semibold">Ready for Accident Incident Qualification Questions</p>
-                    <p class="text-sm text-slate-400 max-w-md mx-auto">This area will dynamically outline incident date verification, fault determinations, and police report status points.</p>
+                <div class="p-8 bg-slate-950/40 border-2 border-dashed border-slate-800 rounded-xl text-center space-y-3">
+                    <p class="text-xl text-slate-200 font-extrabold">Ready for Accident Incident Qualification Questions</p>
+                    <p class="text-base text-slate-400 max-w-xl mx-auto font-bold">This area will dynamically outline incident date verification, fault determinations, and police report status points.</p>
                 </div>
-                <button onclick="revealSection('step-3')" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-4 rounded-lg transition-all text-sm flex justify-center items-center gap-1.5">
+                <button onclick="revealSection('step-3')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base flex justify-center items-center gap-2 shadow-md">
                     Next: Injury & Damage Profiling ➔
                 </button>
             </div>
 
-            <div id="step-3" class="hidden bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-lg space-y-4">
-                <div class="flex justify-between items-center border-b border-slate-700/60 pb-3">
-                    <span class="text-sm font-bold uppercase tracking-wider text-rose-400">Injury & Damage Profiling</span>
-                    <span class="bg-slate-900 text-rose-400 text-xs px-2.5 py-1 rounded font-mono font-bold">Step 3</span>
+            <div id="step-3" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Injury & Damage Profiling</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Step 3</span>
                 </div>
-                <div class="p-8 bg-slate-900/40 border border-dashed border-slate-700 rounded-xl text-center space-y-3">
-                    <p class="text-lg text-slate-300 font-semibold">Ready for Injury Severity & Treatment History Flow</p>
-                    <p class="text-sm text-slate-400 max-w-md mx-auto">Hospitalisation, ongoing chiropractic care, or medical evaluation details go here once received.</p>
+                <div class="p-8 bg-slate-950/40 border-2 border-dashed border-slate-800 rounded-xl text-center space-y-3">
+                    <p class="text-xl text-slate-200 font-extrabold">Ready for Injury Severity & Treatment History Flow</p>
+                    <p class="text-base text-slate-400 max-w-xl mx-auto font-bold">Hospitalisation, ongoing chiropractic care, or medical evaluation details go here once received.</p>
                 </div>
-                <button onclick="revealSection('step-4')" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-4 rounded-lg transition-all text-sm flex justify-center items-center gap-1.5">
+                <button onclick="revealSection('step-4')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base flex justify-center items-center gap-2 shadow-md">
                     Next: Warm Handoff Screening ➔
                 </button>
             </div>
 
-            <div id="step-4" class="hidden bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-lg space-y-4">
-                <div class="flex justify-between items-center border-b border-slate-700/60 pb-3">
-                    <span class="text-sm font-bold uppercase tracking-wider text-rose-400">Warm Handoff Screening</span>
-                    <span class="bg-slate-900 text-rose-400 text-xs px-2.5 py-1 rounded font-mono font-bold">Step 4</span>
+            <div id="step-4" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Warm Handoff Screening</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Step 4</span>
                 </div>
-                <div class="p-8 bg-slate-900/40 border border-dashed border-slate-700 rounded-xl text-center space-y-3">
-                    <p class="text-lg text-slate-300 font-semibold">Ready for Legal Representation Check</p>
-                    <p class="text-sm text-slate-400 max-w-md mx-auto">Pre-transfer screening checks ensuring the client doesn't currently retain alternate legal counsel representation.</p>
+                <div class="p-8 bg-slate-950/40 border-2 border-dashed border-slate-800 rounded-xl text-center space-y-3">
+                    <p class="text-xl text-slate-200 font-extrabold">Ready for Legal Representation Check</p>
+                    <p class="text-base text-slate-400 max-w-xl mx-auto font-bold">Pre-transfer screening checks ensuring the client doesn't currently retain alternate legal counsel representation.</p>
                 </div>
-                <button onclick="revealSection('step-5')" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors shadow-md flex justify-center items-center gap-1.5">
+                <button onclick="revealSection('step-5')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base flex justify-center items-center gap-2 shadow-md">
                     Next: Final Live Handoff Script ➔
                 </button>
             </div>
 
-            <div id="step-5" class="hidden bg-slate-800 border-2 border-rose-500/50 rounded-xl p-6 shadow-2xl space-y-5">
-                <div class="flex justify-between items-center border-b border-slate-700/60 pb-3">
-                    <span class="text-sm font-bold uppercase tracking-wider text-rose-400">Live Handoff To Agent</span>
-                    <span class="bg-slate-900 text-rose-400 text-xs px-2.5 py-1 rounded font-mono font-bold">Final Step</span>
+            <div id="step-5" class="hidden bg-slate-900 border-2 border-indigo-500/50 rounded-xl p-6 shadow-2xl space-y-5">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Live Handoff To Agent</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Final Step</span>
                 </div>
 
                 <div class="space-y-4">
                     <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">PROMPT STATEMENT:</span>
-                        <p class="text-base sm:text-lg text-white bg-slate-900 p-5 border-l-4 border-rose-500 rounded-r-lg leading-relaxed font-medium">
-                            <strong>Agent:</strong> So, <span class="text-amber-300 font-bold">(Customer Name)</span>, I’m now going to bring in <span class="text-amber-300 font-bold">__________</span>, one of our licensed specialists. I’ll stay on briefly to make the introduction smooth and easy for you.
+                        <span class="text-sm font-extrabold text-slate-400 uppercase tracking-wider block mb-1">PROMPT STATEMENT:</span>
+                        <p class="text-lg sm:text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-bold">
+                            <strong>Agent:</strong> So, <span class="text-amber-300 font-extrabold">(Customer Name)</span>, I’m now going to bring in <span class="text-amber-300 font-extrabold">__________</span>, one of our licensed specialists. I’ll stay on briefly to make the introduction smooth and easy for you.
                         </p>
                     </div>
 
-                    <div class="border-t border-slate-700/60 pt-4">
-                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block mb-1">AGENT INTRO / WARM TRANSFER VERBATIM READING:</span>
-                        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                            <p class="text-base sm:text-lg text-slate-200 font-mono leading-relaxed font-semibold">
-                                <strong>Agent:</strong> Hi, <span class="text-amber-300 font-bold">________</span>, this is (Customer Name). We reviewed their current situation, and they’re interested in exploring affordable protection options. I’ll let you take it from here.
+                    <div class="border-t border-slate-800 pt-5">
+                        <span class="text-sm font-extrabold text-emerald-400 uppercase tracking-wider block mb-1">AGENT INTRO / WARM TRANSFER VERBATIM READING:</span>
+                        <div class="bg-slate-950 p-6 rounded-xl border border-slate-850">
+                            <p class="text-lg sm:text-xl text-slate-200 font-mono leading-relaxed font-extrabold">
+                                <strong>Agent:</strong> Hi, <span class="text-amber-300 font-extrabold">________</span>, this is (Customer Name). We reviewed their current situation, and they’re interested in exploring affordable protection options. I’ll let you take it from here.
                             </p>
                         </div>
                     </div>
@@ -139,16 +139,16 @@
 
         </div>
 
-        <div class="hidden xl:block xl:col-span-5 bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-lg sticky top-24 max-h-[85vh] overflow-y-auto custom-scrollbar space-y-5">
+        <div class="hidden xl:block xl:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-xl sticky top-24 max-h-[85vh] overflow-y-auto custom-scrollbar space-y-5">
             
-            <div class="bg-amber-950/30 border border-amber-700/60 rounded-xl p-5 space-y-3">
-                <h2 class="font-bold text-amber-400 tracking-tight text-sm uppercase flex items-center gap-1.5">
+            <div class="bg-amber-950/30 border border-amber-900/60 rounded-xl p-5 space-y-3">
+                <h2 class="font-extrabold text-amber-400 tracking-tight text-base uppercase flex items-center gap-2">
                     ⚠️ Stop & Escalation Triggers
                 </h2>
-                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-bold">
                     Pause conversation and notify compliance supervisor immediately if:
                 </p>
-                <ul class="text-xs sm:text-sm text-slate-300 space-y-2 list-disc pl-5 font-mono text-amber-200/90 font-medium">
+                <ul class="text-sm sm:text-base text-slate-300 space-y-2 list-disc pl-5 font-mono text-amber-200/90 font-extrabold">
                     <li>Lead asks for legal advice / case valuation</li>
                     <li>Lead requests opt-out in any form</li>
                     <li>Lead appears to be a minor</li>
@@ -158,78 +158,123 @@
                 </ul>
             </div>
 
-            <div class="space-y-4">
-                <span class="font-bold text-rose-400 tracking-tight text-xs uppercase block border-b border-slate-700 pb-1">
-                    Objection Handling Library
+            <div class="space-y-3">
+                <span class="font-extrabold text-indigo-400 tracking-tight text-sm uppercase block border-b border-slate-800 pb-1">
+                    Objection Handling Library (Click to view script)
                 </span>
                 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/70 space-y-2">
-                    <span class="text-xs sm:text-sm font-bold text-rose-400 uppercase block font-mono bg-rose-950/40 px-2.5 py-1.5 rounded">“Do I have a case?” / “Am I going to win?”</span>
-                    <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed italic">
-                        “That’s an important question, and I want to make sure you get the right answer. Our team is not able to evaluate the outcome of your situation — we’re an intake service, not a law firm. A licensed attorney would be best positioned to review the specifics. I can help connect you with one if you’d like.”
-                    </p>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleSidebarRebuttal('sib-1')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>❓ “Do I have a case?” / “Am I going to win?”</span>
+                        <span id="sib-1-icon" class="text-slate-400 font-sans text-lg">▶</span>
+                    </button>
+                    <div id="sib-1" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
+                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
+                            “That’s an important question, and I want to make sure you get the right answer. Our team is not able to evaluate the outcome of your situation — we’re an intake service, not a law firm. A licensed attorney would be best positioned to review the specifics. I can help connect you with one if you’d like.”
+                        </p>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/70 space-y-2">
-                    <span class="text-xs sm:text-sm font-bold text-rose-400 uppercase block font-mono bg-rose-950/40 px-2.5 py-1.5 rounded">“How much will I get?” / “What’s my case worth?”</span>
-                    <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed italic">
-                        “Settlement amounts depend on many factors specific to your situation, and we’re not able to evaluate that. A licensed attorney would be better positioned to discuss it with you.”
-                    </p>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleSidebarRebuttal('sib-2')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>💰 “How much will I get?” / “Case worth?”</span>
+                        <span id="sib-2-icon" class="text-slate-400 font-sans text-lg">▶</span>
+                    </button>
+                    <div id="sib-2" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
+                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
+                            “Settlement amounts depend on many factors specific to your situation, and we’re not able to evaluate that. A licensed attorney would be better positioned to discuss it with you.”
+                        </p>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/70 space-y-2">
-                    <span class="text-xs sm:text-sm font-bold text-rose-400 uppercase block font-mono bg-rose-950/40 px-2.5 py-1.5 rounded">“Is this free?” / “What does it cost?”</span>
-                    <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed italic">
-                        “The review itself is handled directly by the attorney — this step simply allows them to look over your situation and get in touch. Fee structures vary by firm, so that’s a conversation to have directly with them.”
-                    </p>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleSidebarRebuttal('sib-3')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>💵 “Is this free?” / “What does it cost?”</span>
+                        <span id="sib-3-icon" class="text-slate-400 font-sans text-lg">▶</span>
+                    </button>
+                    <div id="sib-3" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
+                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
+                            “The review itself is handled directly by the attorney — this step simply allows them to look over your situation and get in touch. Fee structures vary by firm, so that’s a conversation to have directly with them.”
+                        </p>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/70 space-y-2">
-                    <span class="text-xs sm:text-sm font-bold text-rose-400 uppercase block font-mono bg-rose-950/40 px-2.5 py-1.5 rounded">“Take me off your list” / “Stop contacting me”</span>
-                    <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed italic">
-                        “Absolutely, I completely understand. I’ve noted your request and will ensure your information is removed from our outreach list immediately. You will not receive any further messages from us.”
-                    </p>
-                    <span class="text-xs block text-amber-400 font-mono uppercase bg-slate-950 px-2 py-1 rounded border border-slate-800">
-                        [Document: date, time, agent ID, lead ID. Suppress in CRM immediately.]
-                    </span>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleSidebarRebuttal('sib-4')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>🛑 “Take me off your list” / “Stop contacting”</span>
+                        <span id="sib-4-icon" class="text-slate-400 font-sans text-lg">▶</span>
+                    </button>
+                    <div id="sib-4" class="hidden p-5 border-t border-slate-850 bg-slate-900/50 space-y-3">
+                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
+                            “Absolutely, I completely understand. I’ve noted your request and will ensure your information is removed from our outreach list immediately. You will not receive any further messages from us.”
+                        </p>
+                        <span class="text-xs block text-amber-400 font-mono uppercase bg-slate-950 px-3 py-1.5 rounded border border-slate-800 text-center font-extrabold">
+                            [Document parameters & suppress in CRM immediately.]
+                        </span>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/70 space-y-2">
-                    <span class="text-xs sm:text-sm font-bold text-rose-400 uppercase block font-mono bg-rose-950/40 px-2.5 py-1.5 rounded">“Are you my lawyer?” / “Do you represent me?”</span>
-                    <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed italic">
-                        “No — we’re an intake service, not a law firm. Representation would be established directly between you and any attorney you choose to work with. We can help connect you with one.”
-                    </p>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleSidebarRebuttal('sib-5')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>⚖️ “Are you my lawyer?” / “Represent me?”</span>
+                        <span id="sib-5-icon" class="text-slate-400 font-sans text-lg">▶</span>
+                    </button>
+                    <div id="sib-5" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
+                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
+                            “No — we’re an intake service, not a law firm. Representation would be established directly between you and any attorney you choose to work with. We can help connect you with one.”
+                        </p>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/70 space-y-2">
-                    <span class="text-xs sm:text-sm font-bold text-rose-400 uppercase block font-mono bg-rose-950/40 px-2.5 py-1.5 rounded">“What’s the statute of limitations?” / “How long do I have to file?”</span>
-                    <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed italic">
-                        “That’s a legal question we’re not qualified to answer. Time limits vary by state and situation — a licensed attorney in your state would be able to advise you on any deadlines that may apply.”
-                    </p>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleSidebarRebuttal('sib-6')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>📅 “What’s the statute of limitations?”</span>
+                        <span id="sib-6-icon" class="text-slate-400 font-sans text-lg">▶</span>
+                    </button>
+                    <div id="sib-6" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
+                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
+                            “That’s a legal question we’re not qualified to answer. Time limits vary by state and situation — a licensed attorney in your state would be able to advise you on any deadlines that may apply.”
+                        </p>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/70 space-y-2">
-                    <span class="text-xs sm:text-sm font-bold text-rose-400 uppercase block font-mono bg-rose-950/40 px-2.5 py-1.5 rounded">“Who gave you my number?” / “How did you get this?”</span>
-                    <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed italic">
-                        “That’s a fair question. Your information was provided through [lead source / form you submitted on (date if known)]. If you’d prefer not to be contacted further, I can remove you from our list right now — just say the word.”
-                    </p>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleSidebarRebuttal('sib-7')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>🔍 “Who gave you my number?”</span>
+                        <span id="sib-7-icon" class="text-slate-400 font-sans text-lg">▶</span>
+                    </button>
+                    <div id="sib-7" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
+                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
+                            “That’s a fair question. Your information was provided through [lead source / form you submitted on (date if known)]. If you’d prefer not to be contacted further, I can remove you from our list right now — just say the word.”
+                        </p>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/70 space-y-2">
-                    <span class="text-xs sm:text-sm font-bold text-rose-400 uppercase block font-mono bg-rose-950/40 px-2.5 py-1.5 rounded">“This is required, right?” / “Do I have to do this?”</span>
-                    <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed italic">
-                        “Not at all — I want to be transparent. There’s no legal requirement for you to respond to our outreach. Proceeding is entirely your choice, and there’s no obligation.”
-                    </p>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleSidebarRebuttal('sib-8')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>📝 “This is required, right?”</span>
+                        <span id="sib-8-icon" class="text-slate-400 font-sans text-lg">▶</span>
+                    </button>
+                    <div id="sib-8" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
+                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
+                            “Not at all — I want to be transparent. There’s no legal requirement for you to respond to our outreach. Proceeding is entirely your choice, and there’s no obligation.”
+                        </p>
+                    </div>
                 </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/70 space-y-2">
-                    <span class="text-xs sm:text-sm font-bold text-rose-400 uppercase block font-mono bg-rose-950/40 px-2.5 py-1.5 rounded">Lead is upset, hostile, or threatens legal action</span>
-                    <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed italic">
-                        “I’m sorry for the frustration — that’s the last thing we want. Let me remove you from our list right now and escalate this to my supervisor. You won’t hear from us again.”
-                    </p>
-                    <span class="text-xs block text-amber-400 font-mono uppercase bg-slate-950 px-2 py-1 rounded border border-slate-800">
-                        [End contact. Suppress immediately. Notify compliance supervisor.]
-                    </span>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleSidebarRebuttal('sib-9')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>🤬 Lead is upset / Hostile / Threats</span>
+                        <span id="sib-9-icon" class="text-slate-400 font-sans text-lg">▶</span>
+                    </button>
+                    <div id="sib-9" class="hidden p-5 border-t border-slate-850 bg-slate-900/50 space-y-3">
+                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
+                            “I’m sorry for the frustration — that’s the last thing we want. Let me remove you from our list right now and escalate this to my supervisor. You won’t hear from us again.”
+                        </p>
+                        <span class="text-xs block text-amber-400 font-mono uppercase bg-slate-950 px-3 py-1.5 rounded border border-slate-800 text-center font-extrabold">
+                            [End contact immediately & alert supervisor.]
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -237,23 +282,23 @@
     </main>
 
     <div class="fixed bottom-4 right-4 z-50 xl:hidden">
-        <button onclick="toggleStatementsModal(true)" class="bg-rose-600 hover:bg-rose-500 text-white font-bold py-3.5 px-6 rounded-full shadow-2xl text-sm tracking-wider uppercase transition-all flex items-center gap-2 border border-rose-400">
+        <button onclick="toggleStatementsModal(true)" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-4 px-6 rounded-full shadow-2xl text-base tracking-wider uppercase transition-all flex items-center gap-2 border border-indigo-400">
             🛡️ View Live Rebuttals
         </button>
     </div>
 
-    <div id="statements-modal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="bg-slate-800 border border-slate-700 w-full max-w-[650px] rounded-2xl shadow-2xl flex flex-col overflow-hidden h-[85vh]">
+    <div id="statements-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-[650px] rounded-2xl shadow-2xl flex flex-col overflow-hidden h-[85vh]">
             
-            <div class="bg-slate-900 px-6 py-4 border-b border-slate-700 flex justify-between items-center shrink-0">
-                <h3 class="text-white font-bold text-base uppercase tracking-wide flex items-center gap-2">🛡️ MVA Live Objection Library</h3>
-                <button onclick="toggleStatementsModal(false)" class="bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white px-4 py-2 rounded-lg text-sm font-bold uppercase transition-colors">✕ Close</button>
+            <div class="bg-slate-950 px-6 py-4 border-b border-slate-800 flex justify-between items-center shrink-0">
+                <h3 class="text-white font-extrabold text-lg uppercase tracking-wide flex items-center gap-2">🛡️ MVA Live Objection Library</h3>
+                <button onclick="toggleStatementsModal(false)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-4 py-2 rounded-xl text-base font-extrabold uppercase transition-colors">✕ Close</button>
             </div>
 
-            <div class="p-6 overflow-y-auto custom-scrollbar space-y-4 flex-1 text-base">
-                <div class="bg-amber-950/40 border border-amber-700/60 p-4 rounded-xl space-y-2">
-                    <span class="text-sm font-bold text-amber-400 uppercase block font-mono">⚠️ Stop & Escalation Triggers</span>
-                    <ul class="text-sm text-slate-300 space-y-1.5 list-disc pl-5 font-mono font-medium">
+            <div class="p-6 overflow-y-auto custom-scrollbar space-y-4 flex-1 text-base sm:text-lg font-bold">
+                <div class="bg-amber-950/40 border border-amber-900/60 p-5 rounded-xl space-y-2">
+                    <span class="text-base font-extrabold text-amber-400 uppercase block font-mono">⚠️ Stop & Escalation Triggers</span>
+                    <ul class="text-sm sm:text-base text-slate-300 space-y-2 list-disc pl-5 font-mono font-bold">
                         <li>Legal advice / case valuation ask</li>
                         <li>Opt-out requests in any form</li>
                         <li>Lead appears to be a minor</li>
@@ -262,24 +307,111 @@
                     </ul>
                 </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/60 space-y-2">
-                    <span class="text-sm font-bold text-rose-400 uppercase block font-mono">“Do I have a case?” / “Am I going to win?”</span>
-                    <p class="text-base text-slate-100 leading-relaxed italic font-medium">“That’s an important question, and I want to make sure you get the right answer. Our team is not able to evaluate the outcome of your situation — we’re an intake service, not a law firm. A licensed attorney would be best positioned to review the specifics. I can help connect you with one if you’d like.”</p>
-                </div>
+                <div class="space-y-3">
+                    <script>
+                        function toggleMobileRebuttal(id) {
+                            const el = document.getElementById(id);
+                            const icon = document.getElementById(id + '-icon');
+                            if(el.classList.contains('hidden')) {
+                                el.classList.remove('hidden');
+                                icon.innerText = '▼';
+                            } else {
+                                el.classList.add('hidden');
+                                icon.innerText = '▶';
+                            }
+                        }
+                    </script>
+                    
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleMobileRebuttal('mob-1')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                            <span>❓ “Do I have a case?” / “Am I going to win?”</span>
+                            <span id="mob-1-icon" class="text-slate-400">▶</span>
+                        </button>
+                        <div id="mob-1" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“That’s an important question, and I want to make sure you get the right answer. Our team is not able to evaluate the outcome of your situation — we’re an intake service, not a law firm. A licensed attorney would be best positioned to review the specifics. I can help connect you with one if you’d like.”</p>
+                        </div>
+                    </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/60 space-y-2">
-                    <span class="text-sm font-bold text-rose-400 uppercase block font-mono">“How much will I get?” / “What’s my case worth?”</span>
-                    <p class="text-base text-slate-100 leading-relaxed italic font-medium">“Settlement amounts depend on many factors specific to your situation, and we’re not able to evaluate that. A licensed attorney would be better positioned to discuss it with you.”</p>
-                </div>
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleMobileRebuttal('mob-2')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                            <span>💰 “How much will I get?” / “Case worth?”</span>
+                            <span id="mob-2-icon" class="text-slate-400">▶</span>
+                        </button>
+                        <div id="mob-2" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“Settlement amounts depend on many factors specific to your situation, and we’re not able to evaluate that. A licensed attorney would be better positioned to discuss it with you.”</p>
+                        </div>
+                    </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/60 space-y-2">
-                    <span class="text-sm font-bold text-rose-400 uppercase block font-mono">“Is this free?” / “What does it cost?”</span>
-                    <p class="text-base text-slate-100 leading-relaxed italic font-medium">“The review itself is handled directly by the attorney — this step simply allows them to look over your situation and get in touch. Fee structures vary by firm, so that’s a conversation to have directly with them.”</p>
-                </div>
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleMobileRebuttal('mob-3')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                            <span>💵 “Is this free?” / “What does it cost?”</span>
+                            <span id="mob-3-icon" class="text-slate-400">▶</span>
+                        </button>
+                        <div id="mob-3" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“The review itself is handled directly by the attorney — this step simply allows them to look over your situation and get in touch. Fee structures vary by firm, so that’s a conversation to have directly with them.”</p>
+                        </div>
+                    </div>
 
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/60 space-y-2">
-                    <span class="text-sm font-bold text-rose-400 uppercase block font-mono">“Take me off your list” / “Stop contacting me”</span>
-                    <p class="text-base text-slate-100 leading-relaxed italic font-medium">“Absolutely, I completely understand. I’ve noted your request and will ensure your information is removed from our outreach list immediately. You will not receive any further messages from us.”</p>
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleMobileRebuttal('mob-4')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                            <span>🛑 “Take me off your list”</span>
+                            <span id="mob-4-icon" class="text-slate-400">▶</span>
+                        </button>
+                        <div id="mob-4" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“Absolutely, I completely understand. I’ve noted your request and will ensure your information is removed from our outreach list immediately. You will not receive any further messages from us.”</p>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleMobileRebuttal('mob-5')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                            <span>⚖️ “Are you my lawyer?” / “Represent me?”</span>
+                            <span id="mob-5-icon" class="text-slate-400">▶</span>
+                        </button>
+                        <div id="mob-5" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“No — we’re an intake service, not a law firm. Representation would be established directly between you and any attorney you choose to work with. We can help connect you with one.”</p>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleMobileRebuttal('mob-6')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                            <span>📅 “What’s the statute of limitations?”</span>
+                            <span id="mob-6-icon" class="text-slate-400">▶</span>
+                        </button>
+                        <div id="mob-6" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“That’s a legal question we’re not qualified to answer. Time limits vary by state and situation — a licensed attorney in your state would be able to advise you on any deadlines that may apply.”</p>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleMobileRebuttal('mob-7')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                            <span>🔍 “Who gave you my number?”</span>
+                            <span id="mob-7-icon" class="text-slate-400">▶</span>
+                        </button>
+                        <div id="mob-7" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“That’s a fair question. Your information was provided through [lead source / form you submitted on (date if known)]. If you’d prefer not to be contacted further, I can remove you from our list right now — just say the word.”</p>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleMobileRebuttal('mob-8')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                            <span>📝 “This is required, right?”</span>
+                            <span id="mob-8-icon" class="text-slate-400">▶</span>
+                        </button>
+                        <div id="mob-8" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“Not at all — I want to be transparent. There’s no legal requirement for you to respond to our outreach. Proceeding is entirely your choice, and there’s no obligation.”</p>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                        <button onclick="toggleMobileRebuttal('mob-9')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                            <span>🤬 Lead is upset / Hostile / Threats</span>
+                            <span id="mob-9-icon" class="text-slate-400">▶</span>
+                        </button>
+                        <div id="mob-9" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“I’m sorry for the frustration — that’s the last thing we want. Let me remove you from our list right now and escalate this to my supervisor. You won’t hear from us again.”</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -292,6 +424,19 @@
             if (element) {
                 element.classList.remove('hidden');
                 element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function toggleSidebarRebuttal(id) {
+            const element = document.getElementById(id);
+            const icon = document.getElementById(id + '-icon');
+            
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+                icon.innerText = '▼';
+            } else {
+                element.classList.add('hidden');
+                icon.innerText = '▶';
             }
         }
 
@@ -309,6 +454,14 @@
             document.getElementById('step-3').classList.add('hidden');
             document.getElementById('step-4').classList.add('hidden');
             document.getElementById('step-5').classList.add('hidden');
+            
+            // Close all sidebar segments on reset
+            for (let i = 1; i <= 9; i++) {
+                const el = document.getElementById('sib-' + i);
+                const ic = document.getElementById('sib-' + i + '-icon');
+                if (el) el.classList.add('hidden');
+                if (ic) ic.innerText = '▶';
+            }
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
