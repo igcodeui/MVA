@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVA Campaign Intake & Scripting Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@600;700&family=Oswald:wght@500;700&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
     <style>
         /* CSS VARIABLE THEME SCHEME ENGINE */
         :root, [data-theme="apple"] {
@@ -81,16 +81,16 @@
         }
 
         [data-theme="game"] {
-            --bg-main: #091428; /* LoL/MOBA dark slate */
-            --text-main: #f0e6d2; /* Parchment/Gold text */
+            --bg-main: #091428;
+            --text-main: #f0e6d2;
             --text-muted: #a39a88;
             --panel-bg: #1e2836;
-            --panel-border: #c89b3c; /* Epic Gold */
+            --panel-border: #c89b3c;
             --inner-bg: #060c18;
             --accent: #c89b3c;
             --accent-hover: #f0e6d2;
             --accent-text: #091428;
-            --highlight: #0ac8b9; /* Hextech magic cyan */
+            --highlight: #0ac8b9;
             --success-bg: #005a82;
             --success-text: #f0e6d2;
             --danger-bg: #cd1e25;
@@ -101,7 +101,66 @@
             --shadow: 0 0 20px rgba(200, 155, 60, 0.15);
             --glass-blur: none;
             --font-layout: 'Poppins', sans-serif;
-            --font-headings: 'Cinzel', serif; /* Epic fantasy font for headings */
+            --font-headings: 'Cinzel', serif;
+        }
+
+        [data-theme="glitch"] {
+            --bg-main: #050505;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --panel-bg: #0a0a0a;
+            --panel-border: #222222;
+            --inner-bg: #111111;
+            --accent: #d4ff00;
+            --accent-hover: #bce600;
+            --accent-text: #000000;
+            --highlight: #ff00ea;
+            --success-bg: #d4ff00;
+            --success-text: #000000;
+            --danger-bg: #ff00ea;
+            --danger-text: #ffffff;
+            --radius: 0px;
+            --radius-sm: 0px;
+            --border-style: solid;
+            --shadow: none;
+            --glass-blur: none;
+            --font-layout: 'Poppins', sans-serif;
+            --font-headings: 'Oswald', sans-serif;
+        }
+
+        /* NEW EXPLORE THEME (Based on image_21cf9c.jpg) */
+        [data-theme="explore"] {
+            --bg-main: #9ad3d5; /* Light teal water */
+            --text-main: #000000;
+            --text-muted: #4a3e35;
+            --panel-bg: #f2ead3; /* Sand / off-white */
+            --panel-border: #5a3c1e; /* Dark brown border */
+            --inner-bg: #e5dcc0;
+            --accent: #c87038; /* Earthy orange */
+            --accent-hover: #d98147;
+            --accent-text: #ffffff;
+            --highlight: #3c5a24; /* Leafy green */
+            --success-bg: #5c8038; /* Green for success buttons */
+            --success-text: #ffffff;
+            --danger-bg: #a34832; /* Brick red for danger */
+            --danger-text: #ffffff;
+            --radius: 16px;
+            --radius-sm: 8px;
+            --border-style: solid;
+            --shadow: 4px 4px 0px rgba(90, 60, 30, 0.15);
+            --glass-blur: none;
+            --font-layout: 'Nunito', sans-serif;
+            --font-headings: 'Nunito', sans-serif;
+            
+            /* Custom Playful Cursor for this theme only */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 32 32'><path d='M6 6 L14 26 L17 17 L26 14 Z' fill='%23c87038' stroke='%235a3c1e' stroke-width='2' stroke-linejoin='round'/></svg>") 6 6, auto;
+        }
+        
+        /* Custom Pointer Cursor for clickable items in Explore Theme */
+        [data-theme="explore"] a, 
+        [data-theme="explore"] button, 
+        [data-theme="explore"] select {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 32 32'><path d='M8 8 L16 28 L19 19 L28 16 Z' fill='%239ad3d5' stroke='%235a3c1e' stroke-width='2' stroke-linejoin='round'/></svg>") 8 8, pointer;
         }
 
         body {
@@ -122,7 +181,6 @@
             color: var(--accent-text);
         }
 
-        /* Functional Theme System Class Mapping */
         .theme-panel {
             background-color: var(--panel-bg);
             backdrop-filter: var(--glass-blur);
@@ -167,8 +225,8 @@
         .theme-text-muted { color: var(--text-muted); }
         .theme-highlight { color: var(--highlight); }
 
-        /* Game Theme Specific Overrides utilizing internet images */
-        [data-theme="game"] .game-button-bg {
+        /* Game Theme Specific Overrides */
+        [data-theme="game"] .custom-btn-bg {
             background-image: url('https://raw.githubusercontent.com/KenneyNL/UI-Pack/master/PNG/yellow_button00.png');
             background-size: 100% 100%;
             background-color: transparent !important;
@@ -178,11 +236,9 @@
             font-weight: 800;
             box-shadow: none !important;
         }
-        [data-theme="game"] .game-button-bg:hover {
-            filter: brightness(1.1);
-        }
+        [data-theme="game"] .custom-btn-bg:hover { filter: brightness(1.1); }
 
-        [data-theme="game"] .game-button-bg-red {
+        [data-theme="game"] .custom-btn-bg-red {
             background-image: url('https://raw.githubusercontent.com/KenneyNL/UI-Pack/master/PNG/red_button00.png');
             background-size: 100% 100%;
             background-color: transparent !important;
@@ -193,19 +249,111 @@
             text-shadow: 1px 1px 2px black;
             box-shadow: none !important;
         }
-        [data-theme="game"] .game-button-bg-red:hover {
-            filter: brightness(1.1);
+        [data-theme="game"] .custom-btn-bg-red:hover { filter: brightness(1.1); }
+
+        /* GLITCH THEME BUTTON OVERRIDES */
+        [data-theme="glitch"] .custom-btn-bg {
+            background-image: none !important;
+            background-color: var(--highlight) !important;
+            color: #ffffff !important;
+            border: none !important;
+            box-shadow: 4px 4px 0px var(--accent) !important;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: var(--font-headings);
+            letter-spacing: 1px;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+        [data-theme="glitch"] .custom-btn-bg:active {
+            transform: translate(4px, 4px) !important;
+            box-shadow: 0px 0px 0px var(--accent) !important;
         }
 
-        /* Custom structural alerts adapt maps */
+        [data-theme="glitch"] .custom-btn-bg-red {
+            background-image: none !important;
+            background-color: transparent !important;
+            color: #ffffff !important;
+            border: 2px solid #ffffff !important;
+            box-shadow: 4px 4px 0px var(--highlight) !important;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: var(--font-headings);
+            letter-spacing: 1px;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+        [data-theme="glitch"] .custom-btn-bg-red:active {
+            transform: translate(4px, 4px) !important;
+            box-shadow: 0px 0px 0px var(--highlight) !important;
+        }
+        
+        [data-theme="glitch"] .theme-btn-success {
+            box-shadow: 4px 4px 0px var(--highlight);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: var(--font-headings);
+        }
+        [data-theme="glitch"] .theme-btn-success:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px var(--highlight);
+        }
+
+        [data-theme="glitch"] .theme-btn-accent.w-full {
+            background-color: var(--highlight);
+            box-shadow: 4px 4px 0px var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: var(--font-headings);
+        }
+        [data-theme="glitch"] .theme-btn-accent.w-full:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px var(--accent);
+        }
+
+        /* EXPLORE THEME BUTTON OVERRIDES */
+        [data-theme="explore"] .custom-btn-bg,
+        [data-theme="explore"] .theme-btn-accent,
+        [data-theme="explore"] .theme-btn-success,
+        [data-theme="explore"] .theme-btn-danger,
+        [data-theme="explore"] .custom-btn-bg-red {
+            background-image: none !important;
+            border: 2px solid var(--panel-border) !important;
+            border-radius: 12px !important;
+            box-shadow: 0px 4px 0px var(--panel-border) !important;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.2s ease;
+        }
+        [data-theme="explore"] .custom-btn-bg {
+            background-color: var(--accent) !important;
+            color: #ffffff !important;
+        }
+        [data-theme="explore"] .custom-btn-bg-red,
+        [data-theme="explore"] .theme-btn-danger {
+            background-color: var(--danger-bg) !important;
+            color: #ffffff !important;
+        }
+        [data-theme="explore"] .theme-btn-success {
+            background-color: var(--success-bg) !important;
+            color: #ffffff !important;
+        }
+        [data-theme="explore"] .custom-btn-bg:active,
+        [data-theme="explore"] .theme-btn-accent:active,
+        [data-theme="explore"] .theme-btn-success:active,
+        [data-theme="explore"] .theme-btn-danger:active,
+        [data-theme="explore"] .custom-btn-bg-red:active {
+            transform: translateY(4px) !important;
+            box-shadow: 0px 0px 0px var(--panel-border) !important;
+        }
+
+        /* Generic Alert Overrides */
         .alert-warning-box {
             background-color: rgba(255, 159, 10, 0.1);
             border: 1px solid var(--highlight);
         }
 
-        /* Container utility to offset the sticky header */
         .sticky-offset {
-            top: 72px; /* Height of main header */
+            top: 72px; 
         }
     </style>
 </head>
@@ -223,6 +371,8 @@
                 <div class="flex items-center gap-2">
                     <span class="text-xs font-medium theme-text-muted">Workspace:</span>
                     <select id="global-theme-menu" onchange="changeActiveTheme(this.value)" class="theme-inner-card text-inherit border border-opacity-20 text-xs px-3 py-1.5 focus:outline-none cursor-pointer font-semibold">
+                        <option value="explore">🦆 Explore Theme</option>
+                        <option value="glitch">⚡ Glitch Theme</option>
                         <option value="apple"> Apple Theme</option>
                         <option value="game">🎮 MOBA / RPG Theme</option>
                         <option value="dark">🌙 Dark Theme</option>
@@ -240,23 +390,23 @@
     <!-- STICKY REBUTTALS BAR -->
     <div class="sticky sticky-offset z-40 bg-[var(--bg-main)] shadow-xl transition-colors duration-250 border-b border-[var(--panel-border)]">
         <div class="max-w-[1000px] w-full mx-auto px-4 py-3 space-y-3">
-            <span class="font-semibold theme-text-muted uppercase tracking-wider text-[11px] block">🛡️ Quick Rebuttals</span>
+            <span class="font-semibold theme-text-muted uppercase tracking-wider text-[11px] block heading-font">🛡️ Quick Rebuttals</span>
             
             <!-- Rebuttal Buttons Container -->
             <div class="flex flex-wrap gap-2">
                 <!-- General Rebuttals -->
-                <button onclick="showRebuttal(1)" class="game-button-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">❓ Early Legal Q.</button>
-                <button onclick="showRebuttal(2)" class="game-button-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">⚖️ Mid-Call Q.</button>
-                <button onclick="showRebuttal(3)" class="game-button-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">🔍 Who is this?</button>
-                <button onclick="showRebuttal(7)" class="game-button-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">💵 Do I pay?</button>
-                <button onclick="showRebuttal(8)" class="game-button-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">📋 What happens next?</button>
-                <button onclick="showRebuttal(9)" class="game-button-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">⏱️ How long?</button>
+                <button onclick="showRebuttal(1)" class="custom-btn-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">❓ Early Legal Q.</button>
+                <button onclick="showRebuttal(2)" class="custom-btn-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">⚖️ Mid-Call Q.</button>
+                <button onclick="showRebuttal(3)" class="custom-btn-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">🔍 Who is this?</button>
+                <button onclick="showRebuttal(7)" class="custom-btn-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">💵 Do I pay?</button>
+                <button onclick="showRebuttal(8)" class="custom-btn-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">📋 What happens next?</button>
+                <button onclick="showRebuttal(9)" class="custom-btn-bg theme-btn-accent px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">⏱️ How long?</button>
 
                 <!-- Negative Rebuttals (Red) -->
-                <button onclick="showRebuttal(4)" class="game-button-bg-red theme-btn-danger px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">📱 How did you get my #?</button>
-                <button onclick="showRebuttal(5)" class="game-button-bg-red theme-btn-danger px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">🛑 Is this a scam?</button>
-                <button onclick="showRebuttal(6)" class="game-button-bg-red theme-btn-danger px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">👨‍⚖️ Are you a lawyer?</button>
-                <button onclick="showRebuttal(10)" class="game-button-bg-red theme-btn-danger px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">📝 Is this binding?</button>
+                <button onclick="showRebuttal(4)" class="custom-btn-bg-red theme-btn-danger px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">📱 How did you get my #?</button>
+                <button onclick="showRebuttal(5)" class="custom-btn-bg-red theme-btn-danger px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">🛑 Is this a scam?</button>
+                <button onclick="showRebuttal(6)" class="custom-btn-bg-red theme-btn-danger px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">👨‍⚖️ Are you a lawyer?</button>
+                <button onclick="showRebuttal(10)" class="custom-btn-bg-red theme-btn-danger px-4 py-2 text-xs font-semibold shadow-sm transition-transform active:scale-95">📝 Is this binding?</button>
             </div>
 
             <!-- Rebuttal Display Screen -->
@@ -308,7 +458,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Great! Let's start off with this — can I just confirm the state you're calling from, your first and last name, and your phone number?
                 </p>
                 <div class="grid grid-cols-1 gap-3">
-                    <button onclick="goToStep(1, 'path-inbound')" class="game-button-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(1, 'path-inbound')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
                         Collect details, then go to Step 1
                     </button>
                 </div>
@@ -321,7 +471,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> I'm following up because you recently reached out after a vehicle accident. Is that right?
                 </p>
                 <div class="grid grid-cols-1 gap-3">
-                    <button onclick="goToStep(1, 'path-outbound')" class="game-button-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(1, 'path-outbound')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
                         Confirm, then go to Step 1
                     </button>
                 </div>
@@ -336,7 +486,7 @@
                     <p class="text-sm font-medium">🚨 <strong>STOP:</strong> Get a clear Yes before continuing. If hesitant or no, end the call politely.</p>
                 </div>
                 <div class="grid grid-cols-1 gap-3">
-                    <button onclick="goToStep(2, 'step-1')" class="game-button-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(2, 'step-1')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
                         Consent Logged — Proceed to Step 2
                     </button>
                 </div>
@@ -350,10 +500,10 @@
                     <span class="theme-text-muted text-sm">-- Note: If unsure of exact date, ask roughly when (e.g. End of November 2024).</span>
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="goToStep(3, 'step-2')" class="game-button-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(3, 'step-2')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
                         YES — Within SOL
                     </button>
-                    <button onclick="triggerDispo('step-2')" class="game-button-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-2')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
                         NO — Outside SOL Limit (Dispo)
                     </button>
                 </div>
@@ -366,7 +516,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Was this your personal car, or did it involve a commercial vehicle?
                 </p>
                 <div class="grid grid-cols-1 gap-3 mt-4">
-                    <button onclick="goToStep(4, 'step-3')" class="game-button-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(4, 'step-3')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
                         Profiling Completed — Move to Step 4
                     </button>
                 </div>
@@ -378,10 +528,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Who was at fault for the accident?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="goToStep(5, 'step-4')" class="game-button-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(5, 'step-4')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
                         YES — Other driver at fault
                     </button>
-                    <button onclick="triggerDispo('step-4')" class="game-button-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-4')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
                         NO — Client admits fault
                     </button>
                 </div>
@@ -393,10 +543,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Are you currently represented by an attorney for this accident?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="goToStep(6, 'step-5')" class="game-button-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(6, 'step-5')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
                         YES — No current attorney
                     </button>
-                    <button onclick="triggerDispo('step-5')" class="game-button-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-5')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
                         NO — Represented / Dropped
                     </button>
                 </div>
@@ -408,10 +558,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Were you physically injured in the accident?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="revealFollowUpInjuries()" class="game-button-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="revealFollowUpInjuries()" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
                         YES — Injury confirmed
                     </button>
-                    <button onclick="triggerDispo('step-6')" class="game-button-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-6')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
                         NO — No injury reported
                     </button>
                 </div>
@@ -420,7 +570,7 @@
                     <p class="text-[15px] theme-inner-card p-5 leading-relaxed">
                         <span class="theme-highlight font-semibold">Agent:</span> I'm sorry to hear that. Can you describe the injuries briefly?
                     </p>
-                    <button onclick="goToStep(7, 'step-6')" class="game-button-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(7, 'step-6')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
                         Move to Step 7
                     </button>
                 </div>
@@ -432,10 +582,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Did you see a doctor, go to urgent care, or visit the ER within 30 days?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="goToStep(8, 'step-7')" class="game-button-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(8, 'step-7')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
                         YES — Treatment within 30 days
                     </button>
-                    <button onclick="triggerDispo('step-7')" class="game-button-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-7')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
                         NO — No treatment
                     </button>
                 </div>
@@ -447,10 +597,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Are you still receiving medical treatment? When is your next appointment?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="goToStep(9, 'step-8')" class="game-button-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(9, 'step-8')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
                         YES — Active / Documented Gap
                     </button>
-                    <button onclick="triggerDispo('step-8')" class="game-button-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-8')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
                         NO — Gap > 2 months
                     </button>
                 </div>
@@ -462,7 +612,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Was a police report filed?
                 </p>
                 <div class="grid grid-cols-1 gap-3">
-                    <button onclick="goToStep(10, 'step-9')" class="game-button-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(10, 'step-9')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
                         Log Report Status — Go to Step 10
                     </button>
                 </div>
@@ -474,10 +624,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Do you know if the other driver had car insurance? Do you have UM/UIM on yours?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
-                    <button onclick="goToStep('closing', 'step-10')" class="game-button-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep('closing', 'step-10')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
                         YES — Valid Ins. / Has UM
                     </button>
-                    <button onclick="triggerDispo('step-10')" class="game-button-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-10')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
                         NO — Uninsured & No UM
                     </button>
                 </div>
@@ -489,7 +639,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Thank you (sir/ma'am) — I've got everything I need. I'm just going to quickly prepare the agreement...
                 </p>
                 <div class="grid grid-cols-1 gap-3">
-                    <button onclick="goToStep('warm-transfer', 'step-closing')" class="game-button-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-lg">
+                    <button onclick="goToStep('warm-transfer', 'step-closing')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-lg">
                         Retainer Verified — Prepare Handoff
                     </button>
                 </div>
@@ -552,7 +702,7 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('mva-portal-theme') || 'game';
+            const savedTheme = localStorage.getItem('mva-portal-theme') || 'explore';
             changeActiveTheme(savedTheme);
         });
 
