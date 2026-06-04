@@ -9,8 +9,8 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #0b0f19; /* Deep Slate Blue Black */
-            color: #f1f5f9; /* Slate 100 - High Contrast text */
+            background-color: #0b0f19; /* Deep Eye-Care Blue Black */
+            color: #f1f5f9; /* Slate 100 - Deep Contrast */
         }
         .custom-scrollbar::-webkit-scrollbar {
             width: 10px;
@@ -30,14 +30,14 @@
         <div class="max-w-[1600px] w-full mx-auto px-6 py-5 flex justify-between items-center">
             <div class="flex items-center gap-4">
                 <div class="bg-indigo-600 text-white font-extrabold py-2 px-4 rounded-xl text-base tracking-wider uppercase shadow-inner">MVA Intake</div>
-                <h1 class="text-2xl font-extrabold tracking-tight text-white hidden sm:block">Motor Vehicle Accident Campaign Portal</h1>
+                <h1 class="text-2xl font-extrabold tracking-tight text-white hidden sm:block">Motor Vehicle Accident Intake Engine</h1>
             </div>
             <div class="flex items-center gap-4">
-                <span class="px-5 py-2.5 rounded-xl font-bold text-base bg-slate-950 border border-slate-800 text-slate-300 shadow-md hidden md:inline-block">
-                    ⏳ Awaiting Main Flow Script
+                <span class="px-5 py-2.5 rounded-xl font-bold text-base bg-slate-950 border border-slate-800 text-emerald-400 shadow-md hidden md:inline-block">
+                    ✓ Internal Use Only Script Active
                 </span>
                 <button onclick="resetEntirePortal()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-2.5 px-5 rounded-xl text-base tracking-wide uppercase transition-all shadow-lg flex items-center gap-2">
-                    ⟲ Reset Flow
+                    ⟲ Reset Script Flow
                 </button>
             </div>
         </div>
@@ -47,93 +47,339 @@
         
         <div class="xl:col-span-7 space-y-6">
             
-            <div class="bg-amber-500/10 border-l-4 border-amber-500 p-6 rounded-r-xl">
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-xl space-y-4 shadow-md">
                 <div class="flex items-start gap-4">
-                    <span class="text-amber-500 text-2xl">⚠️</span>
-                    <p class="text-base sm:text-lg text-amber-200/90 leading-relaxed font-bold">
-                        <strong class="text-amber-400 font-extrabold">Compliance Directive:</strong> Use these scripts verbatim. They are designed to be helpful and warm while staying within compliance bounds. If a situation is not covered below, default to: <span class="italic text-white font-extrabold bg-slate-950 px-2 py-0.5 rounded border border-slate-800">“That’s a question for a licensed attorney — I can help connect you with one.”</span>
+                    <span class="text-indigo-400 text-2xl">⚖️</span>
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-bold">
+                        <strong class="text-indigo-400 font-extrabold">Compliance Directive:</strong> You are not an attorney. Do not give legal advice, mention deadlines, statutes of limitations, or imply any outcome.<br><br><strong class="text-indigo-400 font-extrabold">Note:</strong> Take detailed notes on every answer using the client's exact words.
                     </p>
                 </div>
             </div>
 
-            <div id="step-1" class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+            <div id="call-initiation" class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400 block border-b border-slate-800 pb-2">Select Initial Greeting Path</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <button onclick="revealGreeting('path-inbound')" class="p-5 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-left rounded-xl transition-all space-y-2 group">
+                        <p class="text-lg font-extrabold text-white group-hover:text-indigo-400">1A — INBOUND PATH</p>
+                        <p class="text-sm text-slate-400">Customer called you directly</p>
+                    </button>
+                    <button onclick="revealGreeting('path-outbound')" class="p-5 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-left rounded-xl transition-all space-y-2 group">
+                        <p class="text-lg font-extrabold text-white group-hover:text-indigo-400">1B — OUTBOUND PATH</p>
+                        <p class="text-sm text-slate-400">You are placing outreach dials</p>
+                    </button>
+                </div>
+            </div>
+
+            <div id="path-inbound" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Verbatim Audio Reading</span>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Hey, this is <span class="text-amber-300">(Agent Name)</span> with Car Accident Payout — how can I assist you today?” <br><br>
+                    “Great! Let's start off with this — can I just confirm the state you're calling from, your first and last name, and your phone number?”
+                </p>
+                <button onclick="goToStep(1)" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base shadow-md">
+                    Collect details, then go to STEP 1 ➔
+                </button>
+            </div>
+
+            <div id="path-outbound" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Verbatim Audio Reading</span>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Hi <span class="text-amber-300">(Client Name)</span>, this is <span class="text-amber-300">(Your Name)</span> calling from Car Accident Payout — can you hear me okay?” <br><br>
+                    “I'm following up because you recently reached out after a vehicle accident. Is that right?”
+                </p>
+                <button onclick="goToStep(1)" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base shadow-md">
+                    Confirm alignment, then go to STEP 1 ➔
+                </button>
+            </div>
+
+            <div id="step-1" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Campaign Introduction</span>
-                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Step 1</span>
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Step 1 — Setting Expectations</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Verification</span>
                 </div>
-                <div class="p-8 bg-slate-950/40 border-2 border-dashed border-slate-800 rounded-xl text-center space-y-3">
-                    <p class="text-xl text-slate-200 font-extrabold">Ready for Client Opening Script</p>
-                    <p class="text-base text-slate-400 max-w-xl mx-auto font-bold">Once the client hands over the greeting and intro flow, it will be seamlessly structured right here with visual highlights.</p>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Great! I just have a few short questions to make sure I have all the info I need — then, if you would like, I can get you in contact with a licensed attorney. Does that work for you?”
+                </p>
+                <div class="bg-amber-950/20 border border-amber-900/40 p-4 rounded-xl">
+                    <p class="text-sm text-amber-300 font-bold">🚨 STOP — Get a clear "Yes" before continuing. If hesitant or no, end the call politely.</p>
                 </div>
-                <button onclick="revealSection('step-2')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base flex justify-center items-center gap-2 mt-2 shadow-md">
-                    Next: Accident Verification ➔
+                <button onclick="goToStep(2)" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base shadow-md">
+                    Consent Logged — Proceed to Step 2 ➔
                 </button>
             </div>
 
             <div id="step-2" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Accident Verification</span>
-                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Step 2</span>
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Step 2 — Location & Accident Timing</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">SOL Check</span>
                 </div>
-                <div class="p-8 bg-slate-950/40 border-2 border-dashed border-slate-800 rounded-xl text-center space-y-3">
-                    <p class="text-xl text-slate-200 font-extrabold">Ready for Accident Incident Qualification Questions</p>
-                    <p class="text-base text-slate-400 max-w-xl mx-auto font-bold">This area will dynamically outline incident date verification, fault determinations, and police report status points.</p>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “What state did the accident take place in?” <br>
+                    “Do you remember the date the accident happened?”<br><br>
+                    <strong class="text-indigo-400 font-extrabold">Note:</strong> If unsure of exact date, ask roughly when (e.g. "End of November 2024").
+                </p>
+                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-3">
+                    <span class="text-xs font-bold text-slate-400 block uppercase">Statute of Limitations (SOL) Matrix Rule:</span>
+                    <p class="text-sm text-slate-200 leading-relaxed font-mono">
+                        • <strong>KY & TN:</strong> 12 months max SOL (so no older than 6 months). <br>
+                        • <strong>All other states:</strong> ~24 months SOL (so no older than 1.5 years).
+                    </p>
                 </div>
-                <button onclick="revealSection('step-3')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base flex justify-center items-center gap-2 shadow-md">
-                    Next: Injury & Damage Profiling ➔
-                </button>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="goToStep(3)" class="bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        YES — Within Limits
+                    </button>
+                    <button onclick="triggerDispo()" class="bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900 text-rose-300 font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        NO — Accident falls outside the 6 month SOL limit.
+                    </button>
+                </div>
             </div>
 
             <div id="step-3" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Injury & Damage Profiling</span>
-                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Step 3</span>
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Step 3 — Incident & Case Details</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Details</span>
                 </div>
-                <div class="p-8 bg-slate-950/40 border-2 border-dashed border-slate-800 rounded-xl text-center space-y-3">
-                    <p class="text-xl text-slate-200 font-extrabold">Ready for Injury Severity & Treatment History Flow</p>
-                    <p class="text-base text-slate-400 max-w-xl mx-auto font-bold">Hospitalisation, ongoing chiropractic care, or medical evaluation details go here once received.</p>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Can you quickly describe what happened? Did they hit you from the driver side or passenger side?” <br><br>
+                    “Was this your personal car, or did it involve a commercial vehicle — like a truck, delivery van, or company car?”
+                </p>
+                
+                <div class="p-5 bg-slate-950 border border-slate-800 rounded-xl text-sm font-mono space-y-2">
+                    <span class="text-indigo-400 font-bold block uppercase text-xs">Verify & Classify Crash Logic:</span>
+                    <p class="text-slate-300 font-bold">
+                        Head-On: Two vehicles hit front-to-front.<br>
+Rear-End: One vehicle crashes into the back of another.<br>
+T-Bone: One vehicle strikes the side of another. Any angle — if hit on the side, it is a T-bone.<br>
+Multi-Vehicle: Three or more vehicles in a chain reaction.<br>
+Other: Everything else, or if client is unsure.
+
+                    </p>
                 </div>
-                <button onclick="revealSection('step-4')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base flex justify-center items-center gap-2 shadow-md">
-                    Next: Warm Handoff Screening ➔
+
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Were you the driver or a passenger?”
+                </p>
+
+                <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl text-sm leading-relaxed text-slate-300 space-y-2">
+                    <p>• <strong>If DRIVER:</strong> Ask: Any passengers? How many? Any injured? Do they need representation? Note names/contact.</p>
+                    <p>• <strong>If PASSENGER:</strong> Ask: Who was driving? Were they injured? Do they need representation?</p>
+                </div>
+
+                <button onclick="goToStep(4)" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base shadow-md">
+                    Profiling Completed — Move to Step 4 ➔
                 </button>
             </div>
 
             <div id="step-4" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Warm Handoff Screening</span>
-                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Step 4</span>
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Step 4 — Fault Evaluation</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Liability</span>
                 </div>
-                <div class="p-8 bg-slate-950/40 border-2 border-dashed border-slate-800 rounded-xl text-center space-y-3">
-                    <p class="text-xl text-slate-200 font-extrabold">Ready for Legal Representation Check</p>
-                    <p class="text-base text-slate-400 max-w-xl mx-auto font-bold">Pre-transfer screening checks ensuring the client doesn't currently retain alternate legal counsel representation.</p>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Who was at fault for the accident?”
+                </p>
+                <div class="bg-slate-950 p-4 border border-slate-800 rounded-xl text-sm text-slate-400 font-mono">
+                    ⚠️ <strong>Edge Case Rule:</strong> If fault is disputed BUT there are significant injuries or a fatality — select CONTINUE path.
                 </div>
-                <button onclick="revealSection('step-5')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base flex justify-center items-center gap-2 shadow-md">
-                    Next: Final Live Handoff Script ➔
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="goToStep(5)" class="bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        Other Driver At Fault
+                    </button>
+                    <button onclick="triggerDispo()" class="bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900 text-rose-300 font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        Client Admits Fault / Issued Ticket
+                    </button>
+                </div>
+            </div>
+
+            <div id="step-5" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Step 5 — Legal Status & Settlement</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Exclusivity</span>
+                </div>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Are you currently represented by an attorney for this accident, or have you previously worked with one for this same incident?”
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="goToStep(6)" class="bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        No Prior / Current Counsel
+                    </button>
+                    <button onclick="triggerDispo()" class="bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900 text-rose-300 font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        Represented / Prior Attorney Drop
+                    </button>
+                </div>
+            </div>
+
+            <div id="step-6" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Step 6 — Injury Assessment</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Medical</span>
+                </div>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Were you physically injured in the accident?”
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="revealFollowUpInjuries()" class="bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        Yes — Injuries Present
+                    </button>
+                    <button onclick="triggerDispo()" class="bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900 text-rose-300 font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        No Injuries Reported
+                    </button>
+                </div>
+
+                <div id="injury-followups" class="hidden pt-4 space-y-4 border-t border-slate-800">
+                    <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-400 rounded-r-lg leading-relaxed font-extrabold">
+                        “I'm sorry to hear that. Can you describe the injuries briefly?” <br><br>
+                        “What side were you injured?” <br><br>
+                        “How would you rate that pain on a scale from 1 to 10? 1 is mild, 10 is the worst pain imaginable.”
+                    </p>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-sm text-slate-400 font-mono leading-relaxed">
+                        ⚠️ <strong>Injury Severity Reference Guide:</strong><br>
+                        • Soft tissue: Whiplash, sprains, bruising, scratches.<br>
+                        • Medium: Herniated discs, torn ligaments, concussions.<br>
+                        • Significant: Fractures, spinal injuries, internal organ damage.
+                    </div>
+                    <button onclick="goToStep(7)" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base shadow-md">
+                        Move to Step 7 (Treatment Flow) ➔
+                    </button>
+                </div>
+            </div>
+
+            <div id="step-7" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Step 7 — Initial Treatment</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Timeline</span>
+                </div>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Did you see a doctor, go to urgent care, or visit the ER within 30 days after the accident?” <br><br>
+                    “Did you have surgery — or do you think you might need it?”
+                </p>
+                <div class="bg-slate-950 p-4 border border-slate-800 rounded-xl text-sm text-slate-400 font-mono">
+                    ⚠️ <strong>Edge Case Rule:</strong> If treatment started >30 days post-accident, client must prove continuous treatment with no gaps exceeding 30 days — OR possess a significant documented injury (fracture, head trauma).
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="goToStep(8)" class="bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        Treatment Within 30 Days
+                    </button>
+                    <button onclick="triggerDispo()" class="bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900 text-rose-300 font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        No Treatment / Long Gap
+                    </button>
+                </div>
+            </div>
+
+            <div id="step-8" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Step 8 — Ongoing Treatment</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Gaps</span>
+                </div>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Are you still receiving medical treatment? When is your next appointment?”<br><br>
+                    <strong class="text-indigo-400 font-extrabold">Note:</strong> If yes ask how often. Note any gaps.
+                </p>
+                <div class="bg-slate-950 p-4 border border-slate-800 rounded-xl text-sm text-slate-400 font-mono">
+                    ⚠️ <strong>Disqualification Marker:</strong> Soft tissue injury with an unexcused treatment gap of 2-3 months or more disqualifies the lead. Uncertainty is a red flag.
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="goToStep(9)" class="bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        Active / Documented Exception
+                    </button>
+                    <button onclick="triggerDispo()" class="bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900 text-rose-300 font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        Soft Tissue & 2-3 Month Gap
+                    </button>
+                </div>
+            </div>
+
+            <div id="step-9" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Step 9 — Police Report</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Nice to Have</span>
+                </div>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Was a police report filed? Do you have a copy or a case number?”
+                </p>
+                <div class="bg-slate-950 p-4 border border-slate-800 rounded-xl text-sm text-slate-400 font-mono">
+                    • Nice to have — not required to qualify. If they have a copy or number, ask them to send it via SMS/email. Note details.
+                </div>
+                <button onclick="goToStep(10)" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base shadow-md">
+                    Log Report Status — Go to Step 10 ➔
                 </button>
             </div>
 
-            <div id="step-5" class="hidden bg-slate-900 border-2 border-indigo-500/50 rounded-xl p-6 shadow-2xl space-y-5">
+            <div id="step-10" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Live Handoff To Agent</span>
-                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Final Step</span>
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Step 10 — Insurance Coverage Matrix</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Mandatory Path</span>
                 </div>
+                <div class="bg-amber-950/20 border border-amber-900/40 p-4 rounded-xl text-sm text-amber-300 font-mono">
+                    📌 <strong>Coverage Mandate Rule:</strong> Either the at-fault driver had valid insurance, OR the client has confirmed UM/UIM coverage. Ask both questions before deciding.
+                </div>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Do you know if the other driver had car insurance at the time of the accident?” <br><br>
+                    “Do you have your own car insurance? Is it liability only, or full coverage?” <br><br>
+                    “Do you have Uninsured or Underinsured Motorist coverage — sometimes called UM or UIM — on your policy?”
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="goToStep('closing')" class="bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        Valid At-Fault Ins. / Client UM
+                    </button>
+                    <button onclick="triggerDispo()" class="bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900 text-rose-300 font-extrabold py-3 px-4 rounded-xl text-base transition-colors shadow-md">
+                        Uninsured & No Client UM
+                    </button>
+                </div>
+            </div>
 
-                <div class="space-y-4">
-                    <div>
-                        <span class="text-sm font-extrabold text-slate-400 uppercase tracking-wider block mb-1">PROMPT STATEMENT:</span>
-                        <p class="text-lg sm:text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-bold">
-                            <strong>Agent:</strong> So, <span class="text-amber-300 font-extrabold">(Customer Name)</span>, I’m now going to bring in <span class="text-amber-300 font-extrabold">__________</span>, one of our licensed specialists. I’ll stay on briefly to make the introduction smooth and easy for you.
-                        </p>
-                    </div>
+            <div id="step-closing" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-5">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-base font-extrabold uppercase tracking-wider text-indigo-400">Agreement Validation & Retainer Closing</span>
+                    <span class="bg-slate-950 text-indigo-400 text-sm px-3 py-1 rounded-lg font-mono font-extrabold">Zoho Sign</span>
+                </div>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    “Thank you (sir/ma'am) — I've got everything I need. I'm just going to quickly prepare the agreement. The agreement allows the attorney to review your case and reach out to you directly.” <br><br>
+                    “Before I send it over, could I get your date of birth, current street address, and city? And would you prefer it through email or SMS?”
+                </p>
+                <div class="bg-slate-950 border border-slate-850 p-6 rounded-xl space-y-4">
+                    <span class="text-xs font-bold text-emerald-400 block uppercase tracking-wide">Zoho Signing Assistance Roadmap Verbatim:</span>
+                    <p class="text-base text-slate-300 font-mono leading-relaxed">
+                        • “You should see it come through into your (email / SMS) — do you see it? Please open it and let me know when it's in front of you.”<br>
+                        • “At the top, there's a prompt to agree to the terms and conditions — please click agree and continue.”<br>
+                        • “Scroll down a little — you should see a green box to sign. Click it. A small window will open with fields for your name, initials, and signature.”<br>
+                        • “At the bottom-left of that window, check the box that says 'fill out in all fields,' then click OK at the bottom-right.”<br>
+                        • “Now at the very top of the document, click Finish.”
+                    </p>
+                </div>
+                <div class="bg-amber-950/20 border border-amber-900/40 p-4 rounded-xl text-center">
+                    <p class="text-sm text-amber-300 font-bold">⚠️ Confirm in ZOHO Sign that the document is 100% completed before performing transfer sequence.</p>
+                </div>
+                <button onclick="goToStep('warm-transfer')" class="w-full bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold py-4 px-4 rounded-xl transition-all text-base shadow-lg">
+                    Retainer Verified in Zoho — Prepare Handoff ➔
+                </button>
+            </div>
 
-                    <div class="border-t border-slate-800 pt-5">
-                        <span class="text-sm font-extrabold text-emerald-400 uppercase tracking-wider block mb-1">AGENT INTRO / WARM TRANSFER VERBATIM READING:</span>
-                        <div class="bg-slate-950 p-6 rounded-xl border border-slate-850">
-                            <p class="text-lg sm:text-xl text-slate-200 font-mono leading-relaxed font-extrabold">
-                                <strong>Agent:</strong> Hi, <span class="text-amber-300 font-extrabold">________</span>, this is (Customer Name). We reviewed their current situation, and they’re interested in exploring affordable protection options. I’ll let you take it from here.
-                            </p>
-                        </div>
-                    </div>
+            <div id="step-warm-transfer" class="hidden bg-slate-900 border-2 border-indigo-500 rounded-xl p-6 shadow-2xl space-y-4">
+                <span class="text-base font-extrabold uppercase tracking-wider text-emerald-400 block border-b border-slate-800 pb-2">Live Warm Handoff Script Sequence</span>
+                <p class="text-xl text-white bg-slate-950 p-6 border-l-4 border-indigo-500 rounded-r-lg leading-relaxed font-extrabold">
+                    <strong>Agent to Client:</strong> “Thank you so much <span class="text-amber-300">(Client Name)</span> — let me try to get you connected with the firm now.”
+                </p>
+                <div class="bg-slate-950 p-6 rounded-xl border border-slate-850 space-y-3">
+                    <span class="text-xs font-bold text-slate-400 block uppercase">When the Firm Rep Picks Up:</span>
+                    <p class="text-lg text-slate-200 font-mono leading-relaxed font-extrabold">
+                        “Hi there, this is <span class="text-amber-300">(Your Name)</span> with Car Accident Payout. I have <span class="text-amber-300">(Client Name)</span> on the line — they just signed your retainer. Can you please confirm you received it?”
+                    </p>
+                </div>
+                <div class="p-4 bg-indigo-950/40 border border-indigo-900/60 rounded-xl text-sm font-mono text-slate-400">
+                    Confirm name, number, and email with the rep. <br>
+                    ➔ "Thank you so much — have a great day." [End Call Flow]
+                </div>
+            </div>
+
+            <div id="step-dispo" class="hidden bg-rose-950/20 border-2 border-rose-900 rounded-xl p-6 shadow-2xl space-y-4">
+                <span class="text-base font-extrabold uppercase tracking-wider text-rose-400 block border-b border-rose-900 pb-2">Disqualified Lead Readout</span>
+                <p class="text-xl text-slate-200 bg-slate-950 p-6 border-l-4 border-rose-600 rounded-r-lg leading-relaxed font-extrabold">
+                    “Ok, I understand. Based on what you've shared, this particular program may not be the right fit for you — but that doesn't mean you're without options.”<br><br>
+                    “You're always welcome to get a second opinion elsewhere. Take care.”
+                </p>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-900 text-sm font-mono text-slate-400 font-bold leading-relaxed">
+                    🚨 <strong>CRITICAL DIRECTIVE:</strong> DO NOT explain why they were not transferred. Do not suggest legal alternatives. Do not imply case strength or weakness. End professionally and immediately.
                 </div>
             </div>
 
@@ -142,148 +388,122 @@
         <div class="hidden xl:block xl:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-xl sticky top-24 max-h-[85vh] overflow-y-auto custom-scrollbar space-y-5">
             
             <div class="bg-amber-950/30 border border-amber-900/60 rounded-xl p-5 space-y-3">
-                <h2 class="font-extrabold text-amber-400 tracking-tight text-base uppercase flex items-center gap-2">
-                    ⚠️ Stop & Escalation Triggers
-                </h2>
-                <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-bold">
-                    Pause conversation and notify compliance supervisor immediately if:
+                <h2 class="font-extrabold text-amber-400 tracking-tight text-base uppercase flex items-center gap-2">⚠️ Escalation Signals</h2>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-bold">
+                    Pause conversation and dispo immediately if lead asks for legal advice, requests opt-out, appears to be a minor, or states they are represented.
                 </p>
-                <ul class="text-sm sm:text-base text-slate-300 space-y-2 list-disc pl-5 font-mono text-amber-200/90 font-extrabold">
-                    <li>Lead asks for legal advice / case valuation</li>
-                    <li>Lead requests opt-out in any form</li>
-                    <li>Lead appears to be a minor</li>
-                    <li>Lead expresses distress or threatens legal action</li>
-                    <li>Consent documentation missing/unclear</li>
-                    <li>Lead's state cannot be identified (Tier 3 rules)</li>
-                </ul>
             </div>
 
             <div class="space-y-3">
-                <span class="font-extrabold text-indigo-400 tracking-tight text-sm uppercase block border-b border-slate-800 pb-1">
-                    Objection Handling Library (Click to view script)
-                </span>
+                <span class="font-extrabold text-indigo-400 tracking-tight text-sm uppercase block border-b border-slate-800 pb-1">Objection Library (Click to Expand)</span>
                 
                 <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                    <button onclick="toggleSidebarRebuttal('sib-1')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
-                        <span>❓ “Do I have a case?” / “Am I going to win?”</span>
+                    <button onclick="toggleSidebarRebuttal('sib-1')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>❓ Early Legal Question</span>
                         <span id="sib-1-icon" class="text-slate-400 font-sans text-lg">▶</span>
                     </button>
                     <div id="sib-1" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
-                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
-                            “That’s an important question, and I want to make sure you get the right answer. Our team is not able to evaluate the outcome of your situation — we’re an intake service, not a law firm. A licensed attorney would be best positioned to review the specifics. I can help connect you with one if you’d like.”
-                        </p>
+                        <p class="text-base text-slate-200 font-bold leading-relaxed italic">“That's a great question — I'm not an attorney and I can't give legal advice, but that's exactly why I'd love to try to connect you with one. I just need a little more information from you first.”</p>
                     </div>
                 </div>
 
                 <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                    <button onclick="toggleSidebarRebuttal('sib-2')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
-                        <span>💰 “How much will I get?” / “Case worth?”</span>
+                    <button onclick="toggleSidebarRebuttal('sib-2')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>⚖️ Mid-Call Legal Question</span>
                         <span id="sib-2-icon" class="text-slate-400 font-sans text-lg">▶</span>
                     </button>
                     <div id="sib-2" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
-                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
-                            “Settlement amounts depend on many factors specific to your situation, and we’re not able to evaluate that. A licensed attorney would be better positioned to discuss it with you.”
-                        </p>
+                        <p class="text-base text-slate-200 font-bold leading-relaxed italic">“That's a fair question, but that's really something only an attorney can answer. Let me keep going — I'm almost done, and then I'll try to get you connected with one right away.”</p>
                     </div>
                 </div>
 
                 <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                    <button onclick="toggleSidebarRebuttal('sib-3')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
-                        <span>💵 “Is this free?” / “What does it cost?”</span>
+                    <button onclick="toggleSidebarRebuttal('sib-3')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>🔍 “Who is this?”</span>
                         <span id="sib-3-icon" class="text-slate-400 font-sans text-lg">▶</span>
                     </button>
                     <div id="sib-3" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
-                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
-                            “The review itself is handled directly by the attorney — this step simply allows them to look over your situation and get in touch. Fee structures vary by firm, so that’s a conversation to have directly with them.”
-                        </p>
+                        <p class="text-base text-slate-200 font-bold leading-relaxed italic">“This is ___ with Car Accident Payout. We're not a law firm — we help people get information and, if they choose, connect with independent attorneys.”</p>
                     </div>
                 </div>
 
                 <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                    <button onclick="toggleSidebarRebuttal('sib-4')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
-                        <span>🛑 “Take me off your list” / “Stop contacting”</span>
+                    <button onclick="toggleSidebarRebuttal('sib-4')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>📱 “How did you get my number?”</span>
                         <span id="sib-4-icon" class="text-slate-400 font-sans text-lg">▶</span>
                     </button>
-                    <div id="sib-4" class="hidden p-5 border-t border-slate-850 bg-slate-900/50 space-y-3">
-                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
-                            “Absolutely, I completely understand. I’ve noted your request and will ensure your information is removed from our outreach list immediately. You will not receive any further messages from us.”
-                        </p>
-                        <span class="text-xs block text-amber-400 font-mono uppercase bg-slate-950 px-3 py-1.5 rounded border border-slate-800 text-center font-extrabold">
-                            [Document parameters & suppress in CRM immediately.]
-                        </span>
+                    <div id="sib-4" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
+                        <p class="text-base text-slate-200 font-bold leading-relaxed italic">“You submitted a request for information regarding an accident, and I'm following up on that. If you'd prefer not to be contacted, just say the word and I'll remove you immediately.”</p>
                     </div>
                 </div>
 
                 <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                    <button onclick="toggleSidebarRebuttal('sib-5')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
-                        <span>⚖️ “Are you my lawyer?” / “Represent me?”</span>
+                    <button onclick="toggleSidebarRebuttal('sib-5')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>🛑 “Is this a scam?”</span>
                         <span id="sib-5-icon" class="text-slate-400 font-sans text-lg">▶</span>
                     </button>
                     <div id="sib-5" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
-                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
-                            “No — we’re an intake service, not a law firm. Representation would be established directly between you and any attorney you choose to work with. We can help connect you with one.”
-                        </p>
+                        <p class="text-base text-slate-200 font-bold leading-relaxed italic">“Completely understandable — you're right to be careful. There's no cost, no commitment, and no pressure. We're a legitimate intake service, and you're fully in control of what happens next.”</p>
                     </div>
                 </div>
 
                 <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                    <button onclick="toggleSidebarRebuttal('sib-6')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
-                        <span>📅 “What’s the statute of limitations?”</span>
+                    <button onclick="toggleSidebarRebuttal('sib-6')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>👨‍⚖️ “Are you a lawyer?”</span>
                         <span id="sib-6-icon" class="text-slate-400 font-sans text-lg">▶</span>
                     </button>
                     <div id="sib-6" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
-                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
-                            “That’s a legal question we’re not qualified to answer. Time limits vary by state and situation — a licensed attorney in your state would be able to advise you on any deadlines that may apply.”
-                        </p>
+                        <p class="text-base text-slate-200 font-bold leading-relaxed italic">“No, I'm not an attorney. My role is to gather your information and, if you'd like, try to connect you with a licensed attorney.”</p>
                     </div>
                 </div>
 
                 <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                    <button onclick="toggleSidebarRebuttal('sib-7')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
-                        <span>🔍 “Who gave you my number?”</span>
+                    <button onclick="toggleSidebarRebuttal('sib-7')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>💵 “Do I have to pay for this?”</span>
                         <span id="sib-7-icon" class="text-slate-400 font-sans text-lg">▶</span>
                     </button>
                     <div id="sib-7" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
-                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
-                            “That’s a fair question. Your information was provided through [lead source / form you submitted on (date if known)]. If you’d prefer not to be contacted further, I can remove you from our list right now — just say the word.”
-                        </p>
+                        <p class="text-base text-slate-200 font-bold leading-relaxed italic">“There's no charge to speak with us. Any fee discussion would be directly between you and the attorney you choose. Attorneys typically work on a contingency basis — you pay nothing unless they win your case.”</p>
                     </div>
                 </div>
 
                 <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                    <button onclick="toggleSidebarRebuttal('sib-8')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
-                        <span>📝 “This is required, right?”</span>
+                    <button onclick="toggleSidebarRebuttal('sib-8')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>📋 Next Step Tracking</span>
                         <span id="sib-8-icon" class="text-slate-400 font-sans text-lg">▶</span>
                     </button>
                     <div id="sib-8" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
-                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
-                            “Not at all — I want to be transparent. There’s no legal requirement for you to respond to our outreach. Proceeding is entirely your choice, and there’s no obligation.”
-                        </p>
+                        <p class="text-base text-slate-200 font-bold leading-relaxed italic">“That's entirely up to you. The attorney will walk you through their process and you can decide from there.”</p>
                     </div>
                 </div>
 
                 <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                    <button onclick="toggleSidebarRebuttal('sib-9')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm sm:text-base font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
-                        <span>🤬 Lead is upset / Hostile / Threats</span>
+                    <button onclick="toggleSidebarRebuttal('sib-9')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>⏱️ “How long will this take?”</span>
                         <span id="sib-9-icon" class="text-slate-400 font-sans text-lg">▶</span>
                     </button>
-                    <div id="sib-9" class="hidden p-5 border-t border-slate-850 bg-slate-900/50 space-y-3">
-                        <p class="text-base sm:text-lg text-slate-100 font-bold leading-relaxed italic">
-                            “I’m sorry for the frustration — that’s the last thing we want. Let me remove you from our list right now and escalate this to my supervisor. You won’t hear from us again.”
-                        </p>
-                        <span class="text-xs block text-amber-400 font-mono uppercase bg-slate-950 px-3 py-1.5 rounded border border-slate-800 text-center font-extrabold">
-                            [End contact immediately & alert supervisor.]
-                        </span>
+                    <div id="sib-9" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
+                        <p class="text-base text-slate-200 font-bold leading-relaxed italic">“Just a few minutes on my end — then you choose how you want to continue.”</p>
                     </div>
                 </div>
+
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleSidebarRebuttal('sib-10')" class="w-full text-left bg-slate-950 hover:bg-slate-800 px-4 py-4 text-sm font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center transition-all">
+                        <span>📝 Retainer Agreement Concerns</span>
+                        <span id="sib-10-icon" class="text-slate-400 font-sans text-lg">▶</span>
+                    </button>
+                    <div id="sib-10" class="hidden p-5 border-t border-slate-850 bg-slate-900/50">
+                        <p class="text-base text-slate-200 font-bold leading-relaxed italic">“Completely fair concern. Both you and the firm have the right to end the agreement at any time — you're not permanently committed. For specific questions about the terms, the attorney will be the best person to walk you through those when you speak with them.”</p>
+                    </div>
+                </div>
+
             </div>
         </div>
-
     </main>
 
     <div class="fixed bottom-4 right-4 z-50 xl:hidden">
         <button onclick="toggleStatementsModal(true)" class="bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-4 px-6 rounded-full shadow-2xl text-base tracking-wider uppercase transition-all flex items-center gap-2 border border-indigo-400">
-            🛡️ View Live Rebuttals
+            🛡️ Live Rebuttals (10)
         </button>
     </div>
 
@@ -291,146 +511,162 @@
         <div class="bg-slate-900 border border-slate-800 w-full max-w-[650px] rounded-2xl shadow-2xl flex flex-col overflow-hidden h-[85vh]">
             
             <div class="bg-slate-950 px-6 py-4 border-b border-slate-800 flex justify-between items-center shrink-0">
-                <h3 class="text-white font-extrabold text-lg uppercase tracking-wide flex items-center gap-2">🛡️ MVA Live Objection Library</h3>
-                <button onclick="toggleStatementsModal(false)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-4 py-2 rounded-xl text-base font-extrabold uppercase transition-colors">✕ Close</button>
+                <h3 class="text-white font-extrabold text-lg uppercase tracking-wide">🛡️ Interactive Objection Library</h3>
+                <button onclick="toggleStatementsModal(false)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-4 py-2 rounded-xl text-base font-extrabold transition-colors">✕ Close</button>
             </div>
 
-            <div class="p-6 overflow-y-auto custom-scrollbar space-y-4 flex-1 text-base sm:text-lg font-bold">
-                <div class="bg-amber-950/40 border border-amber-900/60 p-5 rounded-xl space-y-2">
-                    <span class="text-base font-extrabold text-amber-400 uppercase block font-mono">⚠️ Stop & Escalation Triggers</span>
-                    <ul class="text-sm sm:text-base text-slate-300 space-y-2 list-disc pl-5 font-mono font-bold">
-                        <li>Legal advice / case valuation ask</li>
-                        <li>Opt-out requests in any form</li>
-                        <li>Lead appears to be a minor</li>
-                        <li>Distress or legal threat statement</li>
-                        <li>Missing/unclear consent records</li>
-                    </ul>
-                </div>
-
-                <div class="space-y-3">
-                    <script>
-                        function toggleMobileRebuttal(id) {
-                            const el = document.getElementById(id);
-                            const icon = document.getElementById(id + '-icon');
-                            if(el.classList.contains('hidden')) {
-                                el.classList.remove('hidden');
-                                icon.innerText = '▼';
-                            } else {
-                                el.classList.add('hidden');
-                                icon.innerText = '▶';
-                            }
+            <div class="p-6 overflow-y-auto custom-scrollbar space-y-3 flex-1 text-base sm:text-lg font-bold">
+                
+                <script>
+                    function toggleMobileRebuttal(id) {
+                        const el = document.getElementById(id);
+                        const icon = document.getElementById(id + '-icon');
+                        if(el.classList.contains('hidden')) {
+                            el.classList.remove('hidden');
+                            icon.innerText = '▼';
+                        } else {
+                            el.classList.add('hidden');
+                            icon.innerText = '▶';
                         }
-                    </script>
-                    
-                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                        <button onclick="toggleMobileRebuttal('mob-1')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
-                            <span>❓ “Do I have a case?” / “Am I going to win?”</span>
-                            <span id="mob-1-icon" class="text-slate-400">▶</span>
-                        </button>
-                        <div id="mob-1" class="hidden p-5 bg-slate-900 border-t border-slate-850">
-                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“That’s an important question, and I want to make sure you get the right answer. Our team is not able to evaluate the outcome of your situation — we’re an intake service, not a law firm. A licensed attorney would be best positioned to review the specifics. I can help connect you with one if you’d like.”</p>
-                        </div>
-                    </div>
+                    }
+                </script>
 
-                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                        <button onclick="toggleMobileRebuttal('mob-2')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
-                            <span>💰 “How much will I get?” / “Case worth?”</span>
-                            <span id="mob-2-icon" class="text-slate-400">▶</span>
-                        </button>
-                        <div id="mob-2" class="hidden p-5 bg-slate-900 border-t border-slate-850">
-                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“Settlement amounts depend on many factors specific to your situation, and we’re not able to evaluate that. A licensed attorney would be better positioned to discuss it with you.”</p>
-                        </div>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleMobileRebuttal('mob-1')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                        <span>❓ Early Legal Question</span> <span id="mob-1-icon" class="text-slate-400">▶</span>
+                    </button>
+                    <div id="mob-1" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                        <p class="text-base text-slate-200 leading-relaxed italic font-bold">“That's a great question — I'm not an attorney and I can't give legal advice, but that's exactly why I'd love to try to connect you with one. I just need a little more information from you first.”</p>
                     </div>
-
-                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                        <button onclick="toggleMobileRebuttal('mob-3')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
-                            <span>💵 “Is this free?” / “What does it cost?”</span>
-                            <span id="mob-3-icon" class="text-slate-400">▶</span>
-                        </button>
-                        <div id="mob-3" class="hidden p-5 bg-slate-900 border-t border-slate-850">
-                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“The review itself is handled directly by the attorney — this step simply allows them to look over your situation and get in touch. Fee structures vary by firm, so that’s a conversation to have directly with them.”</p>
-                        </div>
-                    </div>
-
-                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                        <button onclick="toggleMobileRebuttal('mob-4')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
-                            <span>🛑 “Take me off your list”</span>
-                            <span id="mob-4-icon" class="text-slate-400">▶</span>
-                        </button>
-                        <div id="mob-4" class="hidden p-5 bg-slate-900 border-t border-slate-850">
-                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“Absolutely, I completely understand. I’ve noted your request and will ensure your information is removed from our outreach list immediately. You will not receive any further messages from us.”</p>
-                        </div>
-                    </div>
-
-                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                        <button onclick="toggleMobileRebuttal('mob-5')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
-                            <span>⚖️ “Are you my lawyer?” / “Represent me?”</span>
-                            <span id="mob-5-icon" class="text-slate-400">▶</span>
-                        </button>
-                        <div id="mob-5" class="hidden p-5 bg-slate-900 border-t border-slate-850">
-                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“No — we’re an intake service, not a law firm. Representation would be established directly between you and any attorney you choose to work with. We can help connect you with one.”</p>
-                        </div>
-                    </div>
-
-                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                        <button onclick="toggleMobileRebuttal('mob-6')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
-                            <span>📅 “What’s the statute of limitations?”</span>
-                            <span id="mob-6-icon" class="text-slate-400">▶</span>
-                        </button>
-                        <div id="mob-6" class="hidden p-5 bg-slate-900 border-t border-slate-850">
-                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“That’s a legal question we’re not qualified to answer. Time limits vary by state and situation — a licensed attorney in your state would be able to advise you on any deadlines that may apply.”</p>
-                        </div>
-                    </div>
-
-                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                        <button onclick="toggleMobileRebuttal('mob-7')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
-                            <span>🔍 “Who gave you my number?”</span>
-                            <span id="mob-7-icon" class="text-slate-400">▶</span>
-                        </button>
-                        <div id="mob-7" class="hidden p-5 bg-slate-900 border-t border-slate-850">
-                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“That’s a fair question. Your information was provided through [lead source / form you submitted on (date if known)]. If you’d prefer not to be contacted further, I can remove you from our list right now — just say the word.”</p>
-                        </div>
-                    </div>
-
-                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                        <button onclick="toggleMobileRebuttal('mob-8')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
-                            <span>📝 “This is required, right?”</span>
-                            <span id="mob-8-icon" class="text-slate-400">▶</span>
-                        </button>
-                        <div id="mob-8" class="hidden p-5 bg-slate-900 border-t border-slate-850">
-                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“Not at all — I want to be transparent. There’s no legal requirement for you to respond to our outreach. Proceeding is entirely your choice, and there’s no obligation.”</p>
-                        </div>
-                    </div>
-
-                    <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
-                        <button onclick="toggleMobileRebuttal('mob-9')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
-                            <span>🤬 Lead is upset / Hostile / Threats</span>
-                            <span id="mob-9-icon" class="text-slate-400">▶</span>
-                        </button>
-                        <div id="mob-9" class="hidden p-5 bg-slate-900 border-t border-slate-850">
-                            <p class="text-base sm:text-lg text-slate-100 leading-relaxed italic font-bold">“I’m sorry for the frustration — that’s the last thing we want. Let me remove you from our list right now and escalate this to my supervisor. You won’t hear from us again.”</p>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleMobileRebuttal('mob-2')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                        <span>⚖️ Mid-Call Legal Question</span> <span id="mob-2-icon" class="text-slate-400">▶</span>
+                    </button>
+                    <div id="mob-2" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                        <p class="text-base text-slate-200 leading-relaxed italic font-bold">“That's a fair question, but that's really something only an attorney can answer. Let me keep going — I'm almost done, and then I'll try to get you connected with one right away.”</p>
+                    </div>
+                </div>
+
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleMobileRebuttal('mob-3')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                        <span>🔍 “Who is this?”</span> <span id="mob-3-icon" class="text-slate-400">▶</span>
+                    </button>
+                    <div id="mob-3" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                        <p class="text-base text-slate-200 leading-relaxed italic font-bold">“This is ___ with Car Accident Payout. We're not a law firm — we help people get information and, if they choose, connect with independent attorneys.”</p>
+                    </div>
+                </div>
+
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleMobileRebuttal('mob-4')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                        <span>📱 “How did you get my number?”</span> <span id="mob-4-icon" class="text-slate-400">▶</span>
+                    </button>
+                    <div id="mob-4" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                        <p class="text-base text-slate-200 leading-relaxed italic font-bold">“You submitted a request for information regarding an accident, and I'm following up on that. If you'd prefer not to be contacted, just say the word and I'll remove you immediately.”</p>
+                    </div>
+                </div>
+
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleMobileRebuttal('mob-5')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                        <span>🛑 “Is this a scam?”</span> <span id="mob-5-icon" class="text-slate-400">▶</span>
+                    </button>
+                    <div id="mob-5" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                        <p class="text-base text-slate-200 leading-relaxed italic font-bold">“Completely understandable — you're right to be careful. There's no cost, no commitment, and no pressure. We're a legitimate intake service, and you're fully in control of what happens next.”</p>
+                    </div>
+                </div>
+
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleMobileRebuttal('mob-6')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                        <span>👨‍⚖️ “Are you a lawyer?”</span> <span id="mob-6-icon" class="text-slate-400">▶</span>
+                    </button>
+                    <div id="mob-6" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                        <p class="text-base text-slate-200 leading-relaxed italic font-bold">“No, I'm not an attorney. My role is to gather your information and, if you'd like, try to connect you with a licensed attorney.”</p>
+                    </div>
+                </div>
+
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleMobileRebuttal('mob-7')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                        <span>💵 “Do I have to pay for this?”</span> <span id="mob-7-icon" class="text-slate-400">▶</span>
+                    </button>
+                    <div id="mob-7" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                        <p class="text-base text-slate-200 leading-relaxed italic font-bold">“There's no charge to speak with us. Any fee discussion would be directly between you and the attorney you choose. Attorneys typically work on a contingency basis — you pay nothing unless they win your case.”</p>
+                    </div>
+                </div>
+
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleMobileRebuttal('mob-8')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                        <span>📋 Next Step Tracking</span> <span id="mob-8-icon" class="text-slate-400">▶</span>
+                    </button>
+                    <div id="mob-8" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                        <p class="text-base text-slate-200 leading-relaxed italic font-bold">“That's entirely up to you. The attorney will walk you through their process and you can decide from there.”</p>
+                    </div>
+                </div>
+
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleMobileRebuttal('mob-9')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                        <span>⏱️ “How long will this take?”</span> <span id="mob-9-icon" class="text-slate-400">▶</span>
+                    </button>
+                    <div id="mob-9" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                        <p class="text-base text-slate-200 leading-relaxed italic font-bold">“Just a few minutes on my end — then you choose how you want to continue.”</p>
+                    </div>
+                </div>
+
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <button onclick="toggleMobileRebuttal('mob-10')" class="w-full text-left bg-slate-950 px-4 py-4 font-extrabold text-indigo-300 uppercase font-mono flex justify-between items-center text-base">
+                        <span>📝 Retainer Agreement Concerns</span> <span id="mob-10-icon" class="text-slate-400">▶</span>
+                    </button>
+                    <div id="mob-10" class="hidden p-5 bg-slate-900 border-t border-slate-850">
+                        <p class="text-base text-slate-200 leading-relaxed italic font-bold">“Completely fair concern. Both you and the firm have the right to end the agreement at any time — you're not permanently committed. For specific questions about the terms, the attorney will be the best person to walk you through those when you speak with them.”</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
     <script>
-        function revealSection(id) {
-            const element = document.getElementById(id);
+        let currentStepId = null;
+
+        function revealGreeting(id) {
+            document.getElementById('path-inbound').classList.add('hidden');
+            document.getElementById('path-outbound').classList.add('hidden');
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function goToStep(stepNum) {
+            hideAllSteps();
+            const stepId = 'step-' + stepNum;
+            const element = document.getElementById(stepId);
             if (element) {
                 element.classList.remove('hidden');
                 element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         }
 
+        function revealFollowUpInjuries() {
+            document.getElementById('injury-followups').classList.remove('hidden');
+        }
+
+        function triggerDispo() {
+            hideAllSteps();
+            const dispoCard = document.getElementById('step-dispo');
+            dispoCard.classList.remove('hidden');
+            dispoCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function hideAllSteps() {
+            const steps = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5', 'step-6', 'step-7', 'step-8', 'step-9', 'step-10', 'step-closing', 'step-warm-transfer', 'step-dispo'];
+            steps.forEach(s => {
+                const el = document.getElementById(s);
+                if (el) el.classList.add('hidden');
+            });
+        }
+
         function toggleSidebarRebuttal(id) {
             const element = document.getElementById(id);
             const icon = document.getElementById(id + '-icon');
-            
             if (element.classList.contains('hidden')) {
                 element.classList.remove('hidden');
                 icon.innerText = '▼';
@@ -441,28 +677,21 @@
         }
 
         function toggleStatementsModal(shouldShow) {
-            const modal = document.getElementById('statements-modal');
-            if (shouldShow) {
-                modal.classList.remove('hidden');
-            } else {
-                modal.classList.add('hidden');
-            }
+            document.getElementById('statements-modal').classList.toggle('hidden', !shouldShow);
         }
 
         function resetEntirePortal() {
-            document.getElementById('step-2').classList.add('hidden');
-            document.getElementById('step-3').classList.add('hidden');
-            document.getElementById('step-4').classList.add('hidden');
-            document.getElementById('step-5').classList.add('hidden');
+            hideAllSteps();
+            document.getElementById('path-inbound').classList.add('hidden');
+            document.getElementById('path-outbound').classList.add('hidden');
+            document.getElementById('injury-followups').classList.add('hidden');
             
-            // Close all sidebar segments on reset
-            for (let i = 1; i <= 9; i++) {
-                const el = document.getElementById('sib-' + i);
-                const ic = document.getElementById('sib-' + i + '-icon');
-                if (el) el.classList.add('hidden');
-                if (ic) ic.innerText = '▶';
+            for (let i = 1; i <= 10; i++) {
+                const sEl = document.getElementById('sib-' + i);
+                const sIc = document.getElementById('sib-' + i + '-icon');
+                if (sEl) sEl.classList.add('hidden');
+                if (sIc) sIc.innerText = '▶';
             }
-            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
