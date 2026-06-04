@@ -481,7 +481,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Great! I just have a few short questions to make sure I have all the info I need — then, if you would like, I can get you in contact with a licensed attorney. Does that work for you?
                 </p>
                 <div class="alert-warning-box p-4 rounded-[var(--radius-sm)]">
-                    <p class="text-sm font-medium">🚨 <strong>STOP:</strong> Get a clear Yes before continuing. If hesitant or no, end the call politely.</p>
+                    <p class="text-sm font-medium">🚨 <strong>STOP:</strong> Get a clear YES before continuing. If hesitant or no, end the call politely.</p>
                 </div>
                 <div class="grid grid-cols-1 gap-3">
                     <button onclick="goToStep(2, 'step-1')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
@@ -499,10 +499,10 @@
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button onclick="goToStep(3, 'step-2')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
-                        YES — Within SOL
+                        Within SOL
                     </button>
                     <button onclick="triggerDispo('step-2')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
-                        NO — Outside SOL Limit (Dispo)
+                        Outside SOL Limit (Dispo)
                     </button>
                 </div>
             </div>
@@ -527,10 +527,10 @@
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button onclick="goToStep(5, 'step-4')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
-                        YES — Other driver at fault
+                        Other driver at fault
                     </button>
                     <button onclick="triggerDispo('step-4')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
-                        NO — Client admits fault
+                        Client admits fault
                     </button>
                 </div>
             </div>
@@ -542,10 +542,10 @@
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button onclick="goToStep(6, 'step-5')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
-                        YES — No current attorney
+                        No current attorney
                     </button>
                     <button onclick="triggerDispo('step-5')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
-                        NO — Represented / Dropped
+                        Represented / Dropped
                     </button>
                 </div>
             </div>
@@ -557,10 +557,10 @@
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button onclick="revealFollowUpInjuries()" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
-                        YES — Injury confirmed
+                        Injury confirmed
                     </button>
                     <button onclick="triggerDispo('step-6')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
-                        NO — No injury reported
+                        No injury reported
                     </button>
                 </div>
 
@@ -581,10 +581,10 @@
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button onclick="goToStep(8, 'step-7')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
-                        YES — Treatment within 30 days
+                        Treatment within 30 days
                     </button>
                     <button onclick="triggerDispo('step-7')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
-                        NO — No treatment
+                        No treatment
                     </button>
                 </div>
             </div>
@@ -596,10 +596,10 @@
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button onclick="goToStep(9, 'step-8')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
-                        YES — Active / Documented Gap
+                        Active / Documented Gap
                     </button>
                     <button onclick="triggerDispo('step-8')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
-                        NO — Gap > 2 months
+                        Gap > 2 months
                     </button>
                 </div>
             </div>
@@ -623,10 +623,10 @@
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
                     <button onclick="goToStep('closing', 'step-10')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
-                        YES — Valid Ins. / Has UM
+                        Valid Ins. / Has UM
                     </button>
                     <button onclick="triggerDispo('step-10')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
-                        NO — Uninsured & No UM
+                        Uninsured & No UM
                     </button>
                 </div>
             </div>
@@ -646,7 +646,9 @@
             <div id="step-warm-transfer" class="hidden theme-panel p-6 space-y-5 border-[var(--accent)] border-opacity-50 relative overflow-hidden">
                 <span class="text-xs font-semibold uppercase tracking-wider text-[var(--accent)] relative heading-font">Transfer</span>
                 <p class="text-[15px] theme-inner-card p-5 leading-relaxed relative">
-                    <span class="theme-highlight font-semibold">Agent:</span> Thank you so much (Client Name) — let me try to get you connected with the firm now.
+                    <span class="theme-highlight font-semibold">Agent:</span> Thank you so much (Client Name) — let me try to get you connected with the firm now.<br><br>
+                    <strong>If firm picks up:</strong> Hi there, this is (Your Name) with Car Accident Payout. I have (Client Name) on the line — they just signed your retainer. Can you please confirm you received it?<br><br> <strong>Note:</strong> Confirm name, number, and email with the rep.
+                    <br><br><span class="theme-highlight font-semibold">Agent:</span> Thank you so much - have a great day.
                 </p>
             </div>
 
