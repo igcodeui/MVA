@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVA Campaign Intake & Scripting Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cinzel:wght@600;700&family=Oswald:wght@500;700&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Cinzel:wght@600;700&family=Oswald:wght@500;700&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
     <style>
         /* CSS VARIABLE THEME SCHEME ENGINE */
         :root, [data-theme="apple"] {
@@ -128,21 +128,21 @@
             --font-headings: 'Oswald', sans-serif;
         }
 
-        /* NEW EXPLORE THEME (Based on image_21cf9c.jpg) */
+        /* EXPLORE THEME */
         [data-theme="explore"] {
-            --bg-main: #9ad3d5; /* Light teal water */
+            --bg-main: #9ad3d5;
             --text-main: #000000;
             --text-muted: #4a3e35;
-            --panel-bg: #f2ead3; /* Sand / off-white */
-            --panel-border: #5a3c1e; /* Dark brown border */
+            --panel-bg: #f2ead3;
+            --panel-border: #5a3c1e;
             --inner-bg: #e5dcc0;
-            --accent: #c87038; /* Earthy orange */
+            --accent: #c87038;
             --accent-hover: #d98147;
             --accent-text: #ffffff;
-            --highlight: #3c5a24; /* Leafy green */
-            --success-bg: #5c8038; /* Green for success buttons */
+            --highlight: #3c5a24;
+            --success-bg: #5c8038;
             --success-text: #ffffff;
-            --danger-bg: #a34832; /* Brick red for danger */
+            --danger-bg: #a34832;
             --danger-text: #ffffff;
             --radius: 16px;
             --radius-sm: 8px;
@@ -151,18 +151,144 @@
             --glass-blur: none;
             --font-layout: 'Nunito', sans-serif;
             --font-headings: 'Nunito', sans-serif;
-            
-            /* Custom Playful Cursor for this theme only */
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 32 32'><path d='M6 6 L14 26 L17 17 L26 14 Z' fill='%23c87038' stroke='%235a3c1e' stroke-width='2' stroke-linejoin='round'/></svg>") 6 6, auto;
         }
         
-        /* Custom Pointer Cursor for clickable items in Explore Theme */
         [data-theme="explore"] a, 
         [data-theme="explore"] button, 
         [data-theme="explore"] select {
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 32 32'><path d='M8 8 L16 28 L19 19 L28 16 Z' fill='%239ad3d5' stroke='%235a3c1e' stroke-width='2' stroke-linejoin='round'/></svg>") 8 8, pointer;
         }
 
+        /* BUS THEME - REFINED FOR READABILITY & DESIGN */
+        [data-theme="bus"] {
+            --bg-main: #1e1e24; /* Darker clean asphalt for contrast */
+            --text-main: #f5f5f5;
+            --text-muted: #999999;
+            --panel-bg: #2b2b36;
+            --panel-border: #ffcc00; 
+            --inner-bg: #22222a;
+            
+            /* Sharp, highly readable button colors */
+            --accent: #ffcc00; /* School Bus Yellow */
+            --accent-hover: #e6b800;
+            --accent-text: #111111; /* Pitch black text on yellow for maximum readability */
+            --highlight: #ffcc00;
+            --success-bg: #28a745; /* Distinct Green */
+            --success-text: #ffffff;
+            --danger-bg: #dc3545; /* Distinct Red */
+            --danger-text: #ffffff;
+            
+            --radius: 8px;
+            --radius-sm: 4px;
+            --border-style: dashed;
+            --shadow: 0 10px 20px rgba(0,0,0,0.4);
+            --glass-blur: none;
+            
+            /* Changed from Oswald to Poppins for excellent readability at quick glances */
+            --font-layout: 'Poppins', sans-serif;
+            --font-headings: 'Poppins', sans-serif;
+        }
+
+        /* Base Bus Button Shape (Applies to all buttons, including rebuttals) */
+        [data-theme="bus"] .custom-btn-bg,
+        [data-theme="bus"] .theme-btn-accent,
+        [data-theme="bus"] .theme-btn-success,
+        [data-theme="bus"] .theme-btn-danger,
+        [data-theme="bus"] .custom-btn-bg-red {
+            position: relative;
+            background-color: var(--accent) !important;
+            border: 2px solid #000000 !important;
+            border-radius: 4px 16px 4px 4px !important; /* Sloped front hood */
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            overflow: visible !important;
+            transition: filter 0.2s ease, background-color 0.2s ease;
+            color: var(--accent-text) !important;
+        }
+
+        /* Specific text colors depending on button type for high contrast */
+        [data-theme="bus"] .theme-btn-success { background-color: var(--success-bg) !important; color: var(--success-text) !important; }
+        [data-theme="bus"] .theme-btn-danger, [data-theme="bus"] .custom-btn-bg-red { background-color: var(--danger-bg) !important; color: var(--danger-text) !important; }
+
+        /* Drawing the Wheels (Applies to all buttons, including rebuttals) */
+        [data-theme="bus"] .custom-btn-bg::before, [data-theme="bus"] .custom-btn-bg::after,
+        [data-theme="bus"] .theme-btn-accent::before, [data-theme="bus"] .theme-btn-accent::after,
+        [data-theme="bus"] .theme-btn-success::before, [data-theme="bus"] .theme-btn-success::after,
+        [data-theme="bus"] .theme-btn-danger::before, [data-theme="bus"] .theme-btn-danger::after,
+        [data-theme="bus"] .custom-btn-bg-red::before, [data-theme="bus"] .custom-btn-bg-red::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            width: 14px;
+            height: 14px;
+            background-color: #222;
+            border: 2px solid #000;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 2px #666; /* Shiny hubcap */
+        }
+        
+        [data-theme="bus"] .custom-btn-bg::before, [data-theme="bus"] .theme-btn-accent::before,
+        [data-theme="bus"] .theme-btn-success::before, [data-theme="bus"] .theme-btn-danger::before,
+        [data-theme="bus"] .custom-btn-bg-red::before { left: 12px; }
+        
+        [data-theme="bus"] .custom-btn-bg::after, [data-theme="bus"] .theme-btn-accent::after,
+        [data-theme="bus"] .theme-btn-success::after, [data-theme="bus"] .theme-btn-danger::after,
+        [data-theme="bus"] .custom-btn-bg-red::after { right: 20px; }
+
+        /* ADDING WINDOWS & DOORS *ONLY* TO THE MAIN SCRIPT BUTTONS */
+        [data-theme="bus"] main .custom-btn-bg,
+        [data-theme="bus"] main .theme-btn-accent,
+        [data-theme="bus"] main .theme-btn-success,
+        [data-theme="bus"] main .theme-btn-danger,
+        [data-theme="bus"] main .custom-btn-bg-red {
+            /* Using CSS gradients to paint windows and doors directly onto the button background */
+            background-image: 
+                /* 1. Headlight (Front right) */
+                radial-gradient(circle at center, #ffffff 50%, transparent 55%),
+                /* 2. Double Door (Front right) */
+                linear-gradient(to right, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.8) 45%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,0.2) 55%),
+                /* 3. Repeating Windows (Top edge) */
+                repeating-linear-gradient(to right, transparent, transparent 4px, rgba(20, 20, 25, 0.85) 4px, rgba(20, 20, 25, 0.85) 32px) !important;
+            
+            background-size: 
+                10px 10px, /* Headlight size */
+                16px 60%,  /* Door size */
+                calc(100% - 50px) 14px !important; /* Window size (stops before the door) */
+            
+            background-position: 
+                right 4px bottom 8px, /* Headlight pos */
+                right 16px bottom 4px, /* Door pos */
+                left 8px top 6px !important; /* Window pos */
+            
+            background-repeat: no-repeat !important;
+            
+            /* PUSH TEXT DOWN so it doesn't overlap with the tinted windows */
+            padding-top: 28px !important;
+            padding-bottom: 12px !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Fast 0.5s Animation Engine Start & Drive */
+        @keyframes busStartAndDriveFast {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            20% { transform: translateX(-2px) translateY(-1px) rotate(-1deg); } 
+            40% { transform: translateX(2px) translateY(1px) rotate(1deg); }   
+            60% { transform: translateX(-15px) translateY(0) rotate(-2deg); } /* Rev back */          
+            100% { transform: translateX(120vw) translateY(0) rotate(2deg); opacity: 0; } /* Zoom off */
+        }
+
+        .bus-driving-away {
+            /* Now running at 0.5s instead of 1s */
+            animation: busStartAndDriveFast 0.5s forwards cubic-bezier(0.4, 0, 0.2, 1) !important;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* Base styles */
         body {
             font-family: var(--font-layout);
             background-color: var(--bg-main);
@@ -204,7 +330,7 @@
             border-radius: var(--radius-sm);
             transition: all 0.2s ease;
         }
-        .theme-btn-accent:hover { background-color: var(--accent-hover); }
+        .theme-btn-accent:hover { filter: brightness(1.1); }
 
         .theme-btn-success {
             background-color: var(--success-bg);
@@ -372,6 +498,7 @@
                     <span class="text-xs font-medium theme-text-muted">Choose Your Theme:</span>
                     <select id="global-theme-menu" onchange="changeActiveTheme(this.value)" class="theme-inner-card text-inherit border border-opacity-20 text-xs px-3 py-1.5 focus:outline-none cursor-pointer font-semibold">
                         <option value="explore">Beige Theme</option>
+                        <option value="bus">Bus Theme</option>
                         <option value="glitch">Glitch Theme</option>
                         <option value="dark">Dark Theme</option>
                         <option value="light">Light Theme</option>
@@ -425,7 +552,7 @@
             
             <div class="theme-panel p-6 space-y-3">
                 <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-full bg-opacity-20 flex items-center justify-center shrink-0 style-accent-box" style="background-color: rgba(10,132,255,0.15)">
+                    <div class="w-10 h-10 rounded-full bg-opacity-20 flex items-center justify-center shrink-0 style-accent-box" style="background-color: rgba(255,204,0,0.15)">
                         <span class="text-lg">⚖️</span>
                     </div>
                     <p class="text-sm leading-relaxed font-medium">
@@ -438,11 +565,11 @@
             <div id="call-initiation" class="theme-panel p-6 space-y-5">
                 <span class="text-xs font-semibold uppercase tracking-wider theme-text-muted block heading-font">Introduction — Identify Yourself</span>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <button onclick="revealGreeting('path-inbound')" class="p-5 theme-inner-card hover:bg-opacity-50 text-left space-y-1 group">
+                    <button onclick="revealGreeting('path-inbound')" class="p-5 theme-inner-card hover:bg-opacity-50 text-left space-y-1 group relative overflow-hidden transition-colors">
                         <p class="text-base font-semibold group-hover:text-[var(--accent)] transition-colors heading-font">1A — Inbound</p>
                         <p class="text-sm theme-text-muted">(They Call You)</p>
                     </button>
-                    <button onclick="revealGreeting('path-outbound')" class="p-5 theme-inner-card hover:bg-opacity-50 text-left space-y-1 group">
+                    <button onclick="revealGreeting('path-outbound')" class="p-5 theme-inner-card hover:bg-opacity-50 text-left space-y-1 group relative overflow-hidden transition-colors">
                         <p class="text-base font-semibold group-hover:text-[var(--accent)] transition-colors heading-font">1B — Outbound</p>
                         <p class="text-sm theme-text-muted">(You Call Them)</p>
                     </button>
@@ -456,7 +583,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Great! Let's start off with this — can I just confirm the state you're calling from, your first and last name, and your phone number?
                 </p>
                 <div class="grid grid-cols-1 gap-3">
-                    <button onclick="goToStep(1, 'path-inbound')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(1, 'path-inbound')" class="custom-btn-bg w-full theme-btn-accent font-medium shadow-md">
                         Collect details, then go to Step 1
                     </button>
                 </div>
@@ -469,7 +596,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> I'm following up because you recently reached out after a vehicle accident. Is that right?
                 </p>
                 <div class="grid grid-cols-1 gap-3">
-                    <button onclick="goToStep(1, 'path-outbound')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(1, 'path-outbound')" class="custom-btn-bg w-full theme-btn-accent font-medium shadow-md">
                         Confirm, then go to Step 1
                     </button>
                 </div>
@@ -484,7 +611,7 @@
                     <p class="text-sm font-medium">🚨 <strong>STOP:</strong> Get a clear YES before continuing. If hesitant or no, end the call politely.</p>
                 </div>
                 <div class="grid grid-cols-1 gap-3">
-                    <button onclick="goToStep(2, 'step-1')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(2, 'step-1')" class="custom-btn-bg w-full theme-btn-accent font-medium shadow-md">
                         Consent Logged — Proceed to Step 2
                     </button>
                 </div>
@@ -498,10 +625,10 @@
                     <span class="theme-text-muted text-sm">-- Note: If unsure of exact date, ask roughly when (e.g. End of November 2024).</span>
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="goToStep(3, 'step-2')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(3, 'step-2')" class="custom-btn-bg theme-btn-success font-semibold shadow-md">
                         Within SOL
                     </button>
-                    <button onclick="triggerDispo('step-2')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-2')" class="custom-btn-bg-red theme-btn-danger font-medium shadow-md">
                         Outside SOL Limit (Dispo)
                     </button>
                 </div>
@@ -514,7 +641,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Was this your personal car, or did it involve a commercial vehicle?
                 </p>
                 <div class="grid grid-cols-1 gap-3 mt-4">
-                    <button onclick="goToStep(4, 'step-3')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(4, 'step-3')" class="custom-btn-bg w-full theme-btn-accent font-medium shadow-md">
                         Profiling Completed — Move to Step 4
                     </button>
                 </div>
@@ -526,10 +653,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Who was at fault for the accident?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="goToStep(5, 'step-4')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(5, 'step-4')" class="custom-btn-bg theme-btn-success font-semibold shadow-md">
                         Other driver at fault
                     </button>
-                    <button onclick="triggerDispo('step-4')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-4')" class="custom-btn-bg-red theme-btn-danger font-medium shadow-md">
                         Client admits fault
                     </button>
                 </div>
@@ -541,10 +668,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Are you currently represented by an attorney for this accident?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="goToStep(6, 'step-5')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(6, 'step-5')" class="custom-btn-bg theme-btn-success font-semibold shadow-md">
                         No current attorney
                     </button>
-                    <button onclick="triggerDispo('step-5')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-5')" class="custom-btn-bg-red theme-btn-danger font-medium shadow-md">
                         Represented / Dropped
                     </button>
                 </div>
@@ -556,10 +683,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Were you physically injured in the accident?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="revealFollowUpInjuries()" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="revealFollowUpInjuries()" class="custom-btn-bg theme-btn-success font-semibold shadow-md">
                         Injury confirmed
                     </button>
-                    <button onclick="triggerDispo('step-6')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-6')" class="custom-btn-bg-red theme-btn-danger font-medium shadow-md">
                         No injury reported
                     </button>
                 </div>
@@ -568,7 +695,7 @@
                     <p class="text-[15px] theme-inner-card p-5 leading-relaxed">
                         <span class="theme-highlight font-semibold">Agent:</span> I'm sorry to hear that. Can you describe the injuries briefly?
                     </p>
-                    <button onclick="goToStep(7, 'step-6')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(7, 'step-6')" class="custom-btn-bg w-full theme-btn-accent font-medium shadow-md">
                         Move to Step 7
                     </button>
                 </div>
@@ -580,10 +707,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Did you see a doctor, go to urgent care, or visit the ER within 30 days?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="goToStep(8, 'step-7')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(8, 'step-7')" class="custom-btn-bg theme-btn-success font-semibold shadow-md">
                         Treatment within 30 days
                     </button>
-                    <button onclick="triggerDispo('step-7')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-7')" class="custom-btn-bg-red theme-btn-danger font-medium shadow-md">
                         No treatment
                     </button>
                 </div>
@@ -595,10 +722,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Are you still receiving medical treatment? When is your next appointment?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button onclick="goToStep(9, 'step-8')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(9, 'step-8')" class="custom-btn-bg theme-btn-success font-semibold shadow-md">
                         Active / Documented Gap
                     </button>
-                    <button onclick="triggerDispo('step-8')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-8')" class="custom-btn-bg-red theme-btn-danger font-medium shadow-md">
                         Gap > 2 months
                     </button>
                 </div>
@@ -610,7 +737,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Was a police report filed?
                 </p>
                 <div class="grid grid-cols-1 gap-3">
-                    <button onclick="goToStep(10, 'step-9')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep(10, 'step-9')" class="custom-btn-bg w-full theme-btn-accent font-medium shadow-md">
                         Log Report Status — Go to Step 10
                     </button>
                 </div>
@@ -622,10 +749,10 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Do you know if the other driver had car insurance? Do you have UM/UIM on yours?
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
-                    <button onclick="goToStep('closing', 'step-10')" class="custom-btn-bg theme-btn-success font-semibold py-3.5 px-4 shadow-md">
+                    <button onclick="goToStep('closing', 'step-10')" class="custom-btn-bg theme-btn-success font-semibold shadow-md">
                         Valid Ins. / Has UM
                     </button>
-                    <button onclick="triggerDispo('step-10')" class="custom-btn-bg-red theme-btn-danger font-medium py-3.5 px-4 shadow-md">
+                    <button onclick="triggerDispo('step-10')" class="custom-btn-bg-red theme-btn-danger font-medium shadow-md">
                         Uninsured & No UM
                     </button>
                 </div>
@@ -637,7 +764,7 @@
                     <span class="theme-highlight font-semibold">Agent:</span> Thank you (sir/ma'am) — I've got everything I need. I'm just going to quickly prepare the agreement...
                 </p>
                 <div class="grid grid-cols-1 gap-3">
-                    <button onclick="goToStep('warm-transfer', 'step-closing')" class="custom-btn-bg w-full theme-btn-accent font-medium py-3.5 px-4 shadow-lg">
+                    <button onclick="goToStep('warm-transfer', 'step-closing')" class="custom-btn-bg w-full theme-btn-accent font-medium shadow-lg">
                         Retainer Verified — Prepare Handoff
                     </button>
                 </div>
@@ -706,40 +833,75 @@
             changeActiveTheme(savedTheme);
         });
 
+        // --- GLOBAL BUS ANIMATION HANDLER ---
+        // Runs at exactly 0.5s (500ms) to match the new faster CSS animation
+        function handleBusAnimation(callback) {
+            if (document.body.getAttribute('data-theme') === 'bus' && window.event) {
+                const clickedButton = window.event.target.closest('button');
+                if (clickedButton && !clickedButton.classList.contains('bus-driving-away')) {
+                    clickedButton.classList.add('bus-driving-away');
+                    
+                    setTimeout(() => {
+                        callback(); 
+                        clickedButton.classList.remove('bus-driving-away'); 
+                    }, 500); // Trigger transition after exactly 0.5 seconds
+                    
+                    return true; 
+                }
+            }
+            return false; 
+        }
+
         // SCRIPT NAVIGATION
         function revealGreeting(id) {
-            activeGreetingPath = id; 
-            document.getElementById('call-initiation').classList.add('hidden');
-            document.getElementById('path-inbound').classList.add('hidden');
-            document.getElementById('path-outbound').classList.add('hidden');
+            const action = () => {
+                activeGreetingPath = id; 
+                document.getElementById('call-initiation').classList.add('hidden');
+                document.getElementById('path-inbound').classList.add('hidden');
+                document.getElementById('path-outbound').classList.add('hidden');
+                
+                const selectedElement = document.getElementById(id);
+                selectedElement.classList.remove('hidden');
+                selectedElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            };
             
-            const selectedElement = document.getElementById(id);
-            selectedElement.classList.remove('hidden');
-            selectedElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            if (!handleBusAnimation(action)) { action(); }
         }
 
         function goToStep(stepNum, currentTrackId) {
-            if (currentTrackId) { previousStepId = currentTrackId; }
-            const stepId = typeof stepNum === 'number' ? 'step-' + stepNum : 'step-' + stepNum;
-            const element = document.getElementById(stepId);
-            
-            if (element) {
-                element.classList.remove('hidden');
-                setTimeout(() => { element.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
-            }
+            const action = () => {
+                if (currentTrackId) { previousStepId = currentTrackId; }
+                const stepId = typeof stepNum === 'number' ? 'step-' + stepNum : 'step-' + stepNum;
+                const element = document.getElementById(stepId);
+                
+                if (element) {
+                    element.classList.remove('hidden');
+                    setTimeout(() => { element.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
+                }
+            };
+
+            if (!handleBusAnimation(action)) { action(); }
         }
 
         function revealFollowUpInjuries() {
-            const el = document.getElementById('injury-followups');
-            el.classList.remove('hidden');
-            setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+            const action = () => {
+                const el = document.getElementById('injury-followups');
+                el.classList.remove('hidden');
+                setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+            };
+
+            if (!handleBusAnimation(action)) { action(); }
         }
 
         function triggerDispo(originStepId) {
-            if (originStepId) { previousStepId = originStepId; }
-            const dispoCard = document.getElementById('step-dispo');
-            dispoCard.classList.remove('hidden');
-            setTimeout(() => { dispoCard.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
+            const action = () => {
+                if (originStepId) { previousStepId = originStepId; }
+                const dispoCard = document.getElementById('step-dispo');
+                dispoCard.classList.remove('hidden');
+                setTimeout(() => { dispoCard.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
+            };
+
+            if (!handleBusAnimation(action)) { action(); }
         }
 
         function goBackFromDispo() {
